@@ -1,0 +1,639 @@
+1. What is ReactJS?
+ReactJS is a JavaScript library used to build reusable components for the view layer in MVC architecture. It is highly efficient and uses a virtual DOM to render components. It works on the client side and is written in JSX.
+ (Document Object Model) which optimizes rendering performance by minimizing DOM updates. React is fast and works well with other tools and libraries.
+
+
+What is DOM ?
+DOM stands for ‘Document Object Model’. it is a structured representation of the HTML elements that are present in a webpage or web app. DOM represents the entire UI of your application. The DOM is represented as a tree data structure. It contains a node for each UI element present in the web document. It is very useful as it allows web developers to modify content through JavaScript, also it being in structured format helps a lot as we can choose specific targets and all the code becomes much easier to work with.
+
+Disadvantages of real DOM :
+Every time the DOM gets updated, the updated element and its children have to be rendered again to update the UI of our page. For this, each time there is a component update, the DOM needs to be updated and the UI components have to be re-rendered.
+
+
+Virtual DOM
+React uses Virtual DOM exists which is like a lightweight copy of the actual DOM(a virtual representation of the DOM). So for every object that exists in the original DOM, there is an object for that in React Virtual DOM. It is exactly the same, but it does not have the power to directly change the layout of the document. 
+
+Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, the virtual DOM gets updated first instead of the real DOM.
+
+
+2. Explain the MVC architecture.
+The Model-View-Controller (MVC) framework is an architectural/design pattern that separates an application into three main logical components Model, View, and Controller. Each architectural component is built to handle specific development aspects of an application.  It isolates the business logic and presentation layer from each other. It was traditionally used for desktop graphical user interfaces (GUIs). Nowadays, MVC is one of the most frequently used industry-standard web development frameworks to create scalable and extensible projects. It is also used for designing mobile apps.
+
+MVC was created by Trygve Reenskaug. The main goal of this design pattern was to solve the problem of users controlling a large and complex data set by splitting a large application into specific sections that all have their own purpose.
+
+Popular MVC Frameworks
+Some of the most popular and extensively used MVC frameworks are listed below.
+Ruby on Rails
+Django
+CherryPy
+Spring MVC
+Catalyst
+Rails
+
+Controller:
+The controller is the component that enables the interconnection between the views and the model so it acts as an intermediary. The controller doesn’t have to worry about handling data logic, it just tells the model what to do. It processes all the business logic and incoming requests, manipulates data using the Model component, and interact with the View to render the final output.
+
+Responsibilities:
+Receiving user input and interpreting it.
+Updating the Model based on user actions.
+Selecting and displaying the appropriate View.
+Example: In a bookstore application, the Controller would handle actions such as searching for a book, adding a book to the cart, or checking out.
+
+View:
+The View component is used for all the UI logic of the application. It generates a user interface for the user. Views are created by the data which is collected by the model component but these data aren’t taken directly but through the controller. It only interacts with the controller.
+
+Responsibilities:
+Rendering data to the user in a specific format.
+Displaying the user interface elements.
+Updating the display when the Model changes.
+Example: In a bookstore application, the View would display the list of books, book details, and provide input fields for searching or filtering books.
+
+Model:
+The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. It can add or retrieve data from the database. It responds to the controller’s request because the controller can’t interact with the database by itself. The model interacts with the database and gives the required data back to the controller.
+
+Responsibilities:
+Managing data: CRUD (Create, Read, Update, Delete) operations.
+Enforcing business rules.
+Notifying the View and Controller of state changes.
+
+
+
+3. Explain the building blocks of React.
+The five main building blocks of React are:
+Components: These are reusable blocks of code that return HTML.
+JSX: It stands for JavaScript and XML and allows you to write HTML in React.
+Props and State: props are like function parameters and State is similar to variables.
+Context: This allows data to be passed through components as props in a hierarchy.
+Virtual DOM: It is a lightweight copy of the actual DOM which makes DOM manipulation easier.
+
+
+
+4. Explain props and state in React with differences
+Props are used to pass data from one component to another. The state is local data storage that is local to the component only and cannot be passed to other components.
+
+PROPS                                                                        STATE
+The Data is passed from one component to another.	        The Data is passed within the component only.
+It is Immutable (cannot be modified).                    	It is Mutable ( can be modified).
+Props can be used with state and functional components.	         The state can be used only with the state component
+Props are read-only.                                      	The state is both read and write.
+
+
+
+
+5. What is virtual DOM in React?
+React uses Virtual DOM which is like a lightweight copy of the actual DOM(a virtual representation of the DOM). So for every object that exists in the original DOM, there is an object for that in React Virtual DOM. It is the same, but it does not have the power to directly change the layout of the document. Manipulating DOM is slow, but manipulating Virtual DOM is fast as nothing gets drawn on the screen. So each time there is a change in the state of our application, the virtual DOM gets updated first instead of the real DOM.
+
+
+
+
+6. What is JSX?
+JSX is basically a syntax extension of regular JavaScript and is used to create React elements. These elements are then rendered to the React DOM. All the React components are written in JSX. To embed any JavaScript expression in a piece of code written in JSX we will have to wrap that expression in curly braces {}. 
+
+Example of JSX: The name written in curly braces { } signifies JSX
+
+const name = "Learner";
+
+const element = (
+  <h1>
+    Hello,
+    {name}.Welcome to GeeksforGeeks.
+  </h1>
+);
+
+
+
+7. What are components and their type in React?
+A Component is one of the core building blocks of React. In other words, we can say that every application you will develop in React will be made up of pieces called components. Components make the task of building UIs much easier. 
+
+ In React, we mainly have two types of components: 
+
+Functional Components: Functional components are simply javascript functions. We can create a functional component in React by writing a javascript function.
+ 
+Class Components: The class components are a little more complex than the functional components. The functional components are not aware of the other components in your program whereas the class components can work with each other. We can pass data from one class component to another class component.
+
+Functional Component vs Class Component
+A functional component is best suited for cases where the component doesn’t need to interact with other components or manage complex states. Functional components are ideal for presenting static UI elements or composing multiple simple components together under a single parent component.
+
+While class-based components can achieve the same result, they are generally less efficient compared to functional components. Therefore, it’s recommended to not use class components for general use.
+
+
+
+8. How do browsers read JSX?
+In general, browsers are not capable of reading JSX and only can read pure JavaScript. The web browsers read JSX with the help of a transpiler. Transpilers are used to convert JSX into JavaScript. The transpiler used is called Babel
+
+
+9. Explain the steps to create a react application and print Hello World?
+
+To install React, first, make sure Node is installed on your computer. After installing Node. Open the terminal and type the following command.
+
+npx create-react-app <<Application_Name>>
+Navigate to the folder.
+
+cd <<Application_Name>>
+This is the first code of ReactJS Hello World!
+
+import React from "react";
+import "./App.css";
+function App() {
+  return <div className="App">Hello World !</div>;
+}
+export default App;
+
+Type the following command to run the application
+npm start
+
+
+
+10. How to create an event in React?
+
+To create an event write the following code.
+
+function Component() {
+  doSomething(e);
+  {
+    e.preventDefault();
+    // Some more response to the event
+  }
+  return <button onEvent={doSomething}></button>;
+}
+
+
+
+
+11. Explain the creation of a List in react?
+Lists are very useful when it comes to developing the UI of any website. Lists are mainly used for displaying menus on a website, for example, the navbar menu. To create a list in React use the map method of array as follows.
+
+import React from "react";
+import ReactDOM from "react-dom";
+
+const numbers = [1, 2, 3, 4, 5];
+
+const updatedNums = numbers.map((number) => {
+  return <li>{number}</li>;
+});
+
+ReactDOM.render(<ul>{updatedNums}</ul>, document.getElementById("root"));
+
+
+
+12. What is a key in React?
+A “key” is a special string attribute you need to include when creating lists of elements in React. Keys are used in React to identify which items in the list are changed, updated, or deleted. In other words, we can say that keys are used to give an identity to the elements in the lists.
+
+
+13. How to write a comment in React?
+There are two ways to write comments in React.
+
+Multi-line comment: We can write multi-line comments in React using the asterisk format /* */.
+Single line comment: We can write single comments in React using the double forward slash //.
+
+
+
+
+
+14. Explain the difference between React and Angular?
+Field
+React.js
+                                                                           Angular
+Used as	
+React.js is a JavaScript library. 
+As it indicates react js updates only the virtual DOM
+is present and the data flow is always in a single direction.
+
+                                                                       Angular is a framework. Angular updates the                                                                          Real DOM and the data flow is ensured
+                                                                          in the architecture in both directions.
+
+Architecture	
+React.js is more simplified as it follows MVC 
+ie., Model View Control.
+
+                                                                         The architecture is complex as it follows                                                                             MVVM models ie., Model View-ViewModel. 
+
+Scalability	It is highly scalable.	                                    It is less scalable than React JS.
+
+Data Binding	
+It supports Uni-directional data
+ binding which is one-way data binding.	
+                                                                            It supports Bi-directional data 
+
+                                                                        binding which is two way databinding.
+
+DOM	It has a virtual DOM.	                                              It has regular DOM.
+
+
+
+
+
+15. Explain the use of render method in React?
+React renders HTML to the web page by using a function called render(). The purpose of the function is to display the specified HTML code inside the specified HTML element. In the render() method, we can read props and state and return our JSX code to the root component of our app.
+Render in React JS is a fundamental part of class components. It is used to display the component on the UI returned as HTML or JSX components. The ReactDOM.render() function takes two arguments, HTML code and an HTML element.
+
+Purpose of render()
+React renders HTML to the web page by using a function called render().
+The purpose of the function is to display the specified HTML code inside the specified HTML element.
+In the render() method, we can read props and state and return our JSX code to the root component of our app.
+In the render() method, we cannot change the state, and we cannot cause side effects( such as making an HTTP request to the webserver).
+
+
+
+
+16. What is state in React?
+The state is an instance of React Component Class that can be defined as an object of a set of observable properties that control the behaviour of the component. In other words, the State of a component is an object that holds some information that may change over the lifetime of the component.
+
+17. Explain props in React?
+React allows us to pass information to a Component using something called props (which stands for properties). Props are objects which can be used inside a component
+
+We can access any props inside from the component’s class to which the props is passed. The props can be accessed as shown below:
+
+this.props.propName;
+
+
+
+
+
+18. What is higher-order component in React?
+Higher-order components or HOC is the advanced method of reusing the component functionality logic. It simply takes the original component and returns the enhanced component. HOC are beneficial as they are easy to code and read. Also, helps to get rid of copying the same logic in every component.
+
+
+
+20. Explain one way data binding in React?
+Data Binding is the process of connecting the view element or user interface, with the data which populates it.
+ReactJS uses one-way data binding which can be Component to View or View to Component. It is also known as one-way data flow, which means the data has one, and only one way to be transferred to other parts of the application. In essence, this means child components are not able to update the data that is coming from the parent component. It is easy to debug and less prone to errors.
+
+
+
+21.What is conditional rendering in React?
+Conditional rendering in React involves selectively rendering components based on specified conditions. By evaluating these conditions, developers can control which components are displayed, allowing for dynamic and responsive user interfaces in React applications.
+
+Implementing Conditional Rendering
+There may arise a situation when we want to render something based on some condition. For example, consider the situation of handling a login/logout button. Both the buttons have different functions so they will be separate components. Now, the task is if a user is logged in then we will have to render the Logout component to display the logout button and if the user is not logged in then we will have to render the Login component to display the login button.
+
+Implementing Conditional Rendering
+1. Conditional Rendering using if-else Statement
+2. Conditional Rendering using logical && operator
+3. Conditional Rendering using ternary operator
+ 
+
+1. Conditional Rendering using if-else Statement
+
+{isLoggedIn == false ? <DisplayLoggedOut /> : <DisplayLoggedIn />}
+
+Here if the boolean isLoggedIn is false then the DisplayLoggedOut component will be rendered otherwise DisplayLoggedIn component will be rendered.
+
+
+2. Conditional Rendering using logical && operator
+We can use the logical && operator along with some condition to decide what will appear in output based on whether the condition evaluates to true or false. Below is the syntax of using the logical && operator with conditions: 
+
+logical && operator Syntax: 
+{
+    condition &&
+    
+    // This section will contain
+    // elements you want to return
+    // that will be a part of output
+}
+If the condition provided in the above syntax evaluates to True then the elements right after the && operator will be a part of the output and if the condition evaluates to false then the code within the curly braces will not appear in the output.
+
+logical && operator Example:
+Below example is used to illustrate the above mentioned approach Open your react project directory and edit the Index.js file from src folder:
+
+
+
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+ 
+// Example Component
+function Example(){
+    const counter = 5;
+    return(<div>
+            {
+                (counter==5) &&
+                <h1>Hello World!</h1>
+            }
+           </div>
+        );
+}
+ReactDOM.render(
+    <Example />, 
+    document.getElementById('root')
+);
+Output:  
+
+Conditional Rendering using logical && Operator Example - output
+
+Explanation:
+You can clearly see in the above output that as the condition (counter == 5) evaluates to true so the <h1> element is successfully rendered on the screen.
+
+3. Conditional Rendering using ternary operator
+In JavaScript we have a short syntax for writing the if-else conditions due to which the code becomes shorter and easy to read. If the boolean returns true then the element on left will be rendered otherwise element on the right will be rendered
+
+Ternary Operator Syntax:
+function MainComponent(props) {
+    const myBool = props.myBool;
+    return(
+        <>
+            {myBool? <Component 1/>: <Component 2/>}
+        </> 
+    )
+}
+
+
+
+22. What is react router?
+React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
+
+The current latest verstion is React router dom v6
+To install react router type the following command.
+
+npm i react-router-dom
+
+Components of React Router
+React Router mainly comprises of the below components
+
+1. BrowserRouter and HashRouter
+BrowserRouter: Uses the HTML5 history API to keep your UI in sync with the URL.
+HashRouter: Uses the hash portion of the URL (i.e., window.location.hash) to keep your UI in sync with the URL.
+<BrowserRouter>
+    (/* Your routes go here */}
+</BrowserRouter>
+2. Routes and Route
+Routes: A container for all your route definitions.
+Route: Defines a single route with a path and the component to render.
+<Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+</Routes>
+3. Link and NavLink
+Link: Creates navigational links in your application.
+NavLink: Similar to Link but provides additional styling attributes when the link is active.
+<nav>
+    <NavLink to="/" activeClassName="active">Home</NavLink>
+    <Link to="/about">About</Link>
+</nav>
+
+React Router is a powerful library for managing navigation in React applications. It enables seamless page transitions without reloading, using components like BrowserRouter, Routes, and Link. It supports dynamic routing, nested routes, and URL parameters, enhancing user experience.
+
+
+
+23. Explain the components of a react-router
+The main components of a react-router are: refer above ans
+
+Router :  It is the parent component that is used to store all of the other components. Everything within this will be part of the routing functionality
+
+Switch:  The switch component is used to render only the first route that matches the location rather than rendering all matching routes.
+
+Route:  This component checks the current URL and displays the component associated with that exact path. All routes are placed within the switch components.
+
+Link: The Link component is used to create links to different routes.
+
+
+
+24. Explain the lifecycle methods of components
+A React Component can go through four stages of its life as follows. 
+
+React Lifecycle is defined as the series of methods that are invoked in different stages of the component’s existence. A React Component can go through four stages of its life as follows. 
+
+Initialization: This is the stage where the component is constructed with the given Props and default state. This is done in the constructor of a Component Class.
+
+Mounting: Mounting is the stage of rendering the JSX returned by the render method itself.
+
+Updating: Updating is the stage when the state of a component is updated and the application is repainted.
+
+Unmounting: As the name suggests Unmounting is the final step of the component lifecycle where the component is removed from the page.
+
+
+
+
+25. Explain the methods used in mounting phase of components
+Mounting is the phase of the component lifecycle when the initialization of the component is completed and the component is mounted on the DOM and rendered for the first time on the webpage. he mounting phase consists of two such predefined functions as described below
+
+componentWillMount() Function: This function is invoked right before the component is mounted on the DOM.
+componentDidMount() Function: This function is invoked right after the component is mounted on the DOM.
+
+
+26. What is this.setState function in React?
+We use the setState() method to change the state object. It ensures that the component has been updated and calls for re-rendering of the component. The state object of a component may contain multiple attributes and React allows using setState() function to update only a subset of those attributes as well as using multiple setState() methods to update each attribute value independently.
+
+React JS setState
+setState in React is an asynchronous call means if a synchronous call gets called it may not get updated at the right time like to know the current value of an object after an update using setState it may not give the updated value on the console. To get some behavior for synchronous need to pass function instead of object to setState.
+
+Syntax:
+We can use setState() to change the state of the component directly as well as through an arrow function.
+
+setState({ stateName : updatedStateValue })
+// OR
+setState((prevState) => ({ 
+   stateName: prevState.stateName + 1 
+}))
+
+
+
+27.What is the use of ref in React?
+Refs are a function provided by React to access the DOM element and the React element that you might have created on your own. They are used in cases where we want to change the value of a child component, without making use of props and  state.. They have wide functionality as we can use callbacks with them.
+
+The syntax to use ref is
+
+const node = this.myCallRef.current;
+
+Creating refs in React
+ReactJS Refs can be created using React.createRef() function and attached to a React element via the ref attribute.
+
+When to use refs :
+Helpful when using third-party libraries.
+Helpful in animations.
+Helpful in managing focus, media playback, and text selection.
+
+When not to use refs :
+Should not be used with functional components because they don’t have instances.
+Not to be used on things that can be done declaratively.
+When using a library or framework that provides its methods for managing such as Redux or MobX.
+
+
+
+
+28. What are hooks in React?
+ Hooks are a new addition in React 16.8. They let developers use state and other React features without writing a class. Hooks doesn’t violate any existing React concepts. Instead, Hooks provide a direct API to react concepts such as props, state, context, refs and life-cycle
+
+The Built-in React Hooks are:
+
+State Hooks
+Context Hooks
+Ref Hooks
+Effect Hooks
+Performance Hooks
+Resource Hooks
+Other Hooks
+1. React State Hooks
+State Hooks stores and provide access to the information. To add state in Components we use:
+
+useState Hook: useState Hooks provides state variable with direct update access.
+useReducer Hook: useReducer Hook provides a state variable along with the update logic in reducer function.
+const [count, setCount] = useState(0)
+2. React Context Hooks
+Context hooks make it possible to access the information without being passed as a prop.
+
+useContext Hooks: shares the data as a global data with passing down props in component tree.
+const context = useContext(myContext);
+3. React Ref Hooks
+Refs creates the variable containing the information not used for rendering e.g. DOM nodes.
+
+useRef: Declares a reference to the DOM elements mostly a DOM Node.
+useImperativeHandle: It is an additional hook that declares a customizable reference
+const textRef = useRef(null);
+4. Effect Hooks:
+Effects connect the components and make it sync with the system. It includes changes in browser DOM, networks and other libraries.
+
+useEffect: useEffect Hook connects the components to external system
+useLayoutEffect: used to measure the layout, fires when the screen rerenders.
+useInsertionEffect: used to insert the CSS dynamically, fires before the changes made to DOM.
+useEffect(()->{
+    // Code to be executed
+}, [dependencies] )
+5. React Performance Hooks:
+Performace hooks are a way to skip the unnecessary work and optimise the rendering preformance.
+
+useMemo: return a memoized value reducing unnecessary computations.
+useCallback: returns a memoized callback that changes if the dependencies are changed.
+
+
+
+29.Explain the useState hook in React?
+The most used hook in React is the useState() hook. Using this hook we can declare a state variable inside a function but only one state variable can be declared using a single useState() hook. Whenever the useState() hook is used, the value of the state variable is changed and the new variable is stored in a new cell in the stack. When you use useState(), you declare a state variable and a function to update that state. React then manages this state internally and triggers a re-render of the component when the state changes. This allows functional components to maintain and update their internal state over time.
+
+Syntax: The first element is the initial state and the second one is a function that is used for updating the state.
+const [state, setState] = useState(initialstate)
+
+We have to import this hook in React using the following syntax
+
+import {useState} from 'react'
+
+
+
+
+30. Explain the useEffect hook in react?
+The useEffect hook in React eliminates the side effect of using class based components. It is used as an alternative to componentDidUpdate() method. The useEffect hook accepts two arguments where second argument is optional. 
+
+useEffect(function, dependency)
+The dependency decides when the component will be updated again after rendering.
+
+How does it work?
+when can call useEffect with a callback function that contains the side effect logic.
+By default, this function runs after every render of the component.
+You can optionally provide a dependency array as the second argument.
+The effect will only run again if any of the values in the dependency array change.
+
+
+
+
+
+
+31. What is React Fragments?
+ 
+A React Fragment is a feature in React that allows you to group a list of children elements without adding extra nodes to the DOM. Typically, in React, when rendering multiple elements, you need to wrap them in a single parent element like a <div>. However, using unnecessary <div> elements can clutter the DOM and affect styling/layout. React Fragments solve this issue by allowing you to group children without adding extra HTML elements.
+
+<React.Fragment>  
+    <h2>Child-1</h2>   
+    <p> Child-2</p>   
+</React.Fragment>  
+
+
+
+
+
+32. What is a react developer tool?
+React Developer Tools is a Chrome DevTools extension for the React JavaScript library. A very useful tool, if you are working on React.js applications. This extension adds React debugging tools to the Chrome Developer Tools. It helps you to inspect and edit the React component tree that builds the page, and for each component, one can check the props, the state, hooks, etc.
+
+React Developer tool also helps you to know whether in a particular application React.js has been used or not. It is also available in Firefox
+
+
+
+
+33.How to use styles in ReactJS?
+CSS modules are a way to locally scope the content of your CSS file. We can create a CSS module file by naming our CSS file as App.modules.css and then it can be imported inside App.js file using the special syntax mentioned below.
+
+Syntax:
+import styles from './App.module.css';
+
+Approach 1: Using Inline Styles
+In order to apply the inline styles to the elements, we use the style prop. We pass an object with key as CSS properties in camelCase and value as the values that can be assigned to these CSS properties.
+
+Syntax: The syntax to assign inline styles to CSS elements is mentioned below.
+
+<div style={{backgroundColor: 'red'}}></div>
+
+
+
+34. Explain styled components in React?
+Styled-component Module allows us to write CSS within JavaScript in a very modular and reusable way in React. Instead of having one global CSS file for a React project, we can use styled-component for enhancing the developer experience. It also removes the mapping between components and styles – using components as a low-level styling construct
+
+The command to install styled components is
+
+npm i styled-components
+Using the below code we can custom style a button in React
+
+import styled from 'styled-components'
+
+const Button = styled.div`
+width : 100px ;
+cursor: pointer ;
+text-decoration : none;
+`
+export default Button;
+
+
+
+35. What is prop drilling and its disadvantages?
+Prop drilling is basically a situation when the same data is being sent at almost every level due to requirements in the final level. The problem with Prop Drilling is that whenever data from the Parent component will be needed, it would have to come from each level, Regardless of the fact that it is not needed there and simply needed in last.
+
+What are Props?
+In React, components can receive information from a parent component by utilizing props (short for properties). A prop is an object accessible to all React components. It serves as a means to pass data from a parent component to a child component.
+
+<Welcome fullName = "Sourav Sharma" />
+What is Prop Drilling?
+Anyone who has worked in React would have faced this and if not then will face it definitely. Prop drilling is basically a situation when the same data is being sent at almost every level due to requirements in the final level.  
+
+Solve Prop Drilling with UseContext Hook
+The problem with Prop Drilling is that whenever data from the Parent component will be needed, it would have to come from each level, Regardless of the fact that it is not needed there and simply needed in last.
+
+A better alternative to this is using useContext hook. The useContext hook is based on Context API and works on the mechanism of Provider and Consumer. Provider needs to wrap components inside Provider Components in which data have to be consumed. Then in those components, using the useContext hook that data needs to be consumed.
+
+
+
+
+Q. What are controlled and uncontrolled components in react?
+A controlled component is a component which is managed by its parent component and its value is updated using props whereas uncontrolled components maintain their own state and data flow is done inside the component only unlike controlled components which pass data from parent to child 
+
+
+
+QQ. Explain the componentDidMount method in React?
+The componentDidMount() method allows us to execute the React code when the component is already placed in the DOM (Document Object Model). This method is called during the Mounting phase of the React Life-cycle i.e. after the component is rendered.
+
+
+
+
+
+QQ. What are synthetic event in React?
+In order to work as a cross-browser application, React has created a wrapper same as the native browser in order to avoid creating multiple implementations for multiple methods for multiple browsers, creating common names for all events across browsers. Another benefit is that it increases the performance of the application as React reuses the event object.
+
+Common Synthetic Events in React:
+onClick
+onChange
+onSubmit
+onMouseOver
+onKeyPress
+onFocus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

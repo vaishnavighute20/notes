@@ -1,0 +1,106 @@
+java  interview
+
+
+1. Association : A relationship that has no ownership over another.
+
+In Java, an association defines a relationship between two separate classes, enabling objects of one class to communicate with objects of another. It's a structural relationship that can be one-to-one, one-to-many, many-to-one, or many-to-many. The association implies that the involved classes are aware of each other and collaborate, but neither class owns the other.
+
+eg :  A person can  be associated with multiple people ,but  noone can own other.
+ 
+There are two common forms of association:
+
+Aggregation: This is a "has-a" relationship. It represents a weak association where one object can exist independently of the other. For example, a Department has many Employees, but even if the department is deleted, the employees can still exist.
+
+Example:
+java
+Copy code
+class Department {
+    private String name;
+    List<Employee> employees;
+    // Getters, Setters
+}
+
+class Employee {
+    private String name;
+    // Getters, Setters
+}
+Composition: This is a stronger "has-a" relationship where the contained object cannot exist independently of the container object. For example, if a House is destroyed, all the Rooms in it are destroyed as well.
+
+Example:
+java
+Copy code
+class House {
+    private List<Room> rooms;
+
+    House() {
+        rooms = new ArrayList<>();
+    }
+}
+
+class Room {
+    private String name;
+
+    Room(String name) {
+        this.name = name;
+    }
+}
+In both forms, the classes are associated but maintain their independence in terms of lifecycle (except in composition).
+
+
+
+
+2. copy constructor in java with small example 
+
+
+A copy constructor in Java is a constructor that creates a new object by copying the attributes of another object of the same class. Although Java does not have a built-in copy constructor, you can define one manually in your class.
+
+Example of a Copy Constructor in Java:
+java
+Copy code
+class Person {
+    String name;
+    int age;
+
+    // Constructor
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Copy Constructor
+    public Person(Person person) {
+        this.name = person.name;
+        this.age = person.age;
+    }
+
+    // Display details
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Original object
+        Person person1 = new Person("Alice", 25);
+        person1.display();
+
+        // Creating a new object using the copy constructor
+        Person person2 = new Person(person1);
+        person2.display();
+    }
+}
+Output:
+yaml
+Copy code
+Name: Alice, Age: 25
+Name: Alice, Age: 25
+How it works:
+The Person class has a constructor that takes a name and age.
+The copy constructor Person(Person person) accepts another Person object and copies its attributes.
+In the main method, we create an object person1 and then another object person2 by copying the attributes of person1 using the copy constructor.
+This approach is useful when you need to create a deep copy of objects.
+
+
+
+
