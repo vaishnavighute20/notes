@@ -1,0 +1,101 @@
+c# interview 
+
+
+1. What is C#?
+
+C# is an object-oriented, modern programming language that was created by Microsoft. It runs on the .NET Framework. C# is very close to C/C++ and Java programming languages. The language is proposed to be a simple, modern, general-purpose, object-oriented programming language.  The language is used for creating software components.
+
+
+2. How is C# different from the C programming language?
+
+C language supports procedural programming.
+Whereas C# supports object-oriented programming.
+
+C language supports pointers.
+Whereas in C#, pointers are used only in unsafe mode.
+
+In C language, garbage collection is not.
+While in C#, garbage collection is managed by Common Language Runtime (CLR).
+
+C language can be executed cross-platform.
+Whereas .NET Framework is required to execute C# language.
+
+By using C language we can achieve a low level of abstraction.
+Whereas by using the C# we can achieve a high degree of abstraction.
+
+C language is more on functions.
+While C# is more on design.
+
+C language gives a top-notch performance.
+While C# gives an objectives standard performance.
+
+There are 32 total keywords used in the C language.
+While a total of 86 keywords are used in C#.
+
+C language is mainly used in commercial industries and engineering.
+Whereas C# is used for software formation and other networking-related objectives.
+
+
+
+
+3. What is Common Language Runtime (CLR)?
+     The Common Language Runtime (CLR) is a component of the Microsoft .NET Framework that manages the execution of .NET applications. It is responsible for loading and executing the code written in various .NET programming languages, including C#, VB.NET, F#, and others. It is the run-time environment in the .NET Framework that runs the codes and helps in making the development process easier by providing various services such as remoting, thread management, type-safety, memory management, robustness, etc.
+     Basically, it is responsible for managing the execution of .NET programs regardless of any .NET programming language. It also helps in the management of code, as code that targets the runtime is known as the Managed Code, and code that doesn’t target to runtime is known as Unmanaged code. Additionally, the CLR provides a framework for developing and deploying .NET applications, including a set of libraries, called the .NET Framework Class Library, which provides access to a wide range of functionality, such as input/output operations, networking, database connectivity, and user interface design.
+
+    Overall, the CLR is a critical component of the .NET Framework and is responsible for ensuring that .NET applications are executed in a safe, secure, and efficient manner, making it a fundamental aspect of C# programming.
+
+
+
+4. What is inheritance? Does C# support multiple inheritance?
+Inheritance is an important pillar of OOP(Object Oriented Programming). It is the mechanism in C# by which one class is allowed to inherit the features(fields and methods) of another class.
+
+Super Class: The class whose features are inherited is known as superclass(or a base class or a parent class).
+Sub Class: The class that inherits the other class is known as a subclass(or a derived class, extended class, or child class). The subclass can add its own fields and methods in addition to the superclass fields and methods.
+Reusability: Inheritance supports the concept of “reusability”, i.e. when we want to create a new class and there is already a class that includes some of the code that we want, we can derive our new class from the existing class. By doing this, we are reusing the fields and methods of the existing class.
+C# does not support multiple class inheritance.  
+
+ Multiple inheritance refers to the ability of a class to inherit from multiple base classes. C# does not support multiple inheritance of classes, but it does support multiple inheritance using interfaces. An interface is a collection of abstract methods that a class can implement to provide specific behavior. A class canimplement multiple interfaces, which allows it to inherit functionality from multiple sources.
+
+
+
+5. What is the difference between a struct and a class in C#? 
+A class is a user-defined blueprint or prototype from which objects are created. Basically, a class combines the fields and methods(member function which defines actions) into a single unit.
+A structure is a collection of variables of different data types under a single unit. It is almost similar to a class because both are user-defined data types and both hold a bunch of different data types.
+In summary, the main differences between classes and structures in C# are inheritance, reference type vs value type, default constructor, initialization, and size/performance. Classes are usually used for larger, more complex objects, while structures are used for smaller, simpler objects that are used frequently and need to be passed around quickly.  
+
+
+
+6.What is enum in C#?
+Enumeration (or enum) is a value data type in C#. It is mainly used to assign the names or string values to integral constants, which make a program easy to read and maintain. For example, the 4 suits in a deck of playing cards may be 4 enumerators named Club, Diamond, Heart, and Spade, belonging to an enumerated type named Suit. Other examples include natural enumerated types (like the planets, days of the week, colors, directions, etc.). The main objective of enum is to define our own data types(Enumerated Data Types). Enumeration is declared using the enum keyword directly inside a namespace, class, or structure. 
+
+
+
+7.What is the difference between ref and out keywords?
+The ref is a keyword in C# which is used for passing the arguments by a reference. Or we can say that if any changes made in this argument in the method will reflect in that variable when the control return to the calling method. The ref parameter does not pass the property.
+The out is a keyword in C# which is used for passing the arguments to methods as a reference type. It is generally used when a method returns multiple values. The out parameter does not pass the property.
+
+
+
+8.What are Properties in C#?
+Properties are the special type of class members that provides a flexible mechanism to read, write, or compute the value of a private field. Properties can be used as if they are public data members, but they are actually special methods called accessors. This enables data to be accessed easily and helps to promote the flexibility and safety of methods. Encapsulation and hiding of information can also be achieved using properties. It uses pre-defined methods which are “get” and “set” methods which help to access and modify the properties.
+
+Accessors: The block of “set” and “get” is known as “Accessors”. It is very essential to restrict the accessibility of the property. There are two types of accessors i.e. get accessors and set accessors. There are different types of properties based on the “get” and set accessors:
+
+Read and Write Properties: When property contains both get and set methods.
+Read-Only Properties: When property contains only the get method.
+Write Only Properties: When property contains only set method.
+Auto Implemented Properties: When there is no additional logic in the property accessors, and it introduces in C# 3.0. 
+
+<access_modifier> <return_type> <property_name>
+{
+        get { // body }
+        set { // body }
+}
+
+
+
+
+
+
+
+
