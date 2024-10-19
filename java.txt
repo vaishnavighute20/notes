@@ -1034,9 +1034,9 @@ Encapsulation
 63. What is the difference between an object-oriented programming language and an object-based programming language?
 
 
-Object-Oriented Programming Language                                Object-Based Programming Language
+Object-Oriented Programming Language                                     Object-Based Programming Language
 
-Object-oriented programming language covers larger                   The scope of object-based programming is
+Object-oriented programming language covers larger                     The scope of object-based programming is
 concepts like inheritance, polymorphism, abstraction, etc.	           limited to the usage of objects and                                                                                                encapsulation.
 
 It supports all the built-in objects	                                 It doesn’t support all the built-in objects
@@ -1692,9 +1692,9 @@ Barking
 
     Inheritance in C++                                               Inheritance in Java
 
-C++ lets the user to inherit multiple classes.	        Java doesn’t support multiple inheritances.
+C++ lets the user to inherit multiple classes.	                Java doesn’t support multiple inheritances.
 
-When a class is created in C++, it doesn’t inherit       Java is always said to have a single inheritance as 
+When a class is created in C++, it doesn’t inherit            Java is always said to have a single inheritance as 
  from the object class, instead exists on its own.	      all the classes inherit in one or the other way from                                                                               the object class.
 
 
@@ -1765,6 +1765,2467 @@ Composition implies a relationship where the child cannot exist independently of
 No, we can’t inherit a constructor.
 
 Constructors in Java are not inherited because each class needs to handle its own initialization process. However, through the use of the super() keyword, a subclass can reuse the logic of its parent class's constructor, ensuring that the parent class is properly initialized before the subclass adds its specific initialization steps
+
+
+
+
+
+
+
+
+101. What is Polymorphism?
+Polymorphism is defined as the ability to take more than one form It is of two types namely, Compile time polymorphism or method overloading- a function called during compile time. For instance, take a class ‘area’. Based on the number of parameters it may calculate the area of a square, triangle, or circle. Run time polymorphism or method overriding- links during run time.  The method inside a class overrides the method of the parent class.
+
+
+
+
+
+
+102. What is runtime polymorphism or dynamic method dispatch?
+
+Dynamic method dispatch is a resolving mechanism for method overriding during the run time. Method overriding is the one where the method in a subclass has the same name, parameters, and return type as a method in the superclass. When the over-ridden method is called through a superclass reference, java determines which version (superclass or subclass) of that method is to be executed based upon the type of an object being referred to at the time the call occurs. Thus the decision is made at run time. This is referred to as dynamic method dispatch.
+
+
+At compile time, the compiler checks the reference type (which is Animal in the example), but at runtime, the JVM determines the actual object (whether it's a Dog or a Cat) and calls the appropriate overridden method.
+This allows for flexible and extensible code, especially in situations involving inheritance and interfaces.
+
+
+
+
+
+
+103. What is method overriding?
+
+Method overriding, also known as run time polymorphism is one where the child class contains the same method as the parent class. For instance, we have a method named ‘gfg()’ in the parent class. A method gfg() is again defined in the sub-class. Thus when gfg() is called in the subclass, the method within the class id executed. Here, gfg() within the class overridden the method outside.
+
+
+Method overriding is a method to achieve Run-time polymorphism in Java. Method overriding is a feature that allows a child class to provide a specific implementation of a method that is already provided by one of its parent classes. When a method in a child class has the same name, the same parameters or signature, and the same return type(or sub-type) as a method in its parent class, then the method in the subclass is said to override the method in the superclass.
+
+
+
+
+
+
+
+104. What is method overloading?
+In Java, Method Overloading allows different methods to have the same name, but different signatures where the signature can differ by the number of input parameters or type of input parameters, or a mixture of both.
+
+Method overloading in Java is also known as Compile-time Polymorphism, Static Polymorphism, or Early binding. In Method overloading compared to the parent argument, the child argument will get the highest priority.
+
+
+
+
+
+
+105. Can we override the static method?
+No, as static methods are part of the class rather than the object so we can’t override them. This is because static methods belong to the class itself rather than to any specific instance of the class. When you declare a static method in a subclass with the same name as one in its superclass, you are not overriding it but rather hiding the superclass's static method.
+
+
+
+
+
+106. Can we override the overloaded method?
+Yes, since the overloaded method is a completely different method in the eyes of the compiler. Overriding isn’t the same thing at all. The decision as to which method to call is deferred to runtime.
+
+If a method is overloaded in a superclass (multiple versions of the method exist with different parameters), you can still override one or more of those overloaded methods in the subclass, but you must follow the same rules for method overriding: the method in the subclass must have the same signature (name, return type, and parameters) as the method in the superclass.
+
+
+
+
+
+
+107. Can we overload the main() method?
+
+Yes in Java we can overload the main method to call the main method with the help of its predefined calling method. 
+
+Yes, you can overload the main() method in Java, just like any other method. However, only the standard main() method with the signature public static void main(String[] args) is used by the JVM as the entry point of the program. Any overloaded versions of main() will not be called by the JVM directly.
+
+Example of overloading main():
+public class Test {
+    public static void main(String[] args) {
+        System.out.println("Main method with String[] args");
+        
+        // Calling overloaded main methods
+        main(10);  
+        main("Hello");
+    }
+    
+    // Overloaded main methods
+    public static void main(int a) {
+        System.out.println("Overloaded main method with int parameter: " + a);
+    }
+    
+    public static void main(String s) {
+        System.out.println("Overloaded main method with String parameter: " + s);
+    }
+}
+Output:
+
+Main method with String[] args
+Overloaded main method with int parameter: 10
+Overloaded main method with String parameter: Hello
+
+
+Key points:
+
+Overloaded main() methods can have different parameter types (e.g., int, String, etc.) and can be called like regular methods from within the main class or other methods.
+The JVM will only invoke the main(String[] args) method when starting the application. Other overloaded versions of main() can only be called explicitly within the program.
+
+
+
+
+
+
+
+
+
+108. What are method overloading and method overriding?
+
+Method Overloading: It is also known as Compile Time Polymorphism. In method overloading two or more methods are shared in the same class with a different signature. 
+
+Example:
+
+// Java Program to demonstrate use of Method Overloading
+
+import java.io.*;
+class GFG {
+    static int multiply(int a, int b) { return a * b; }
+    static int multiply(int a, int b, int c)
+    {
+        return a * b * c;
+    }
+    static int multiply(int a, int b, int c, int d)
+    {
+        return a * b * c * d;
+    }
+    public static void main(String[] args)
+    {
+        System.out.println("multiply() with 2 parameters");
+        System.out.println(multiply(4, 5));
+        System.out.println("multiply() with 3 parameters");
+        System.out.println(multiply(2, 3, 4));
+        System.out.println("multiply() with 4 parameters");
+        System.out.println(multiply(2, 3, 4, 1));
+    }
+}
+
+Output
+multiply() with 2 parameters
+20
+multiply() with 3 parameters
+24
+multiply() with 4 parameters
+24
+
+
+
+Method Overriding: Method Overriding occurs when a subclass can provide the implementation of a method which is already defined in the parent class or superclass. The return type, name and arguments must be similar to the methods in superclass.
+
+
+Example:
+// Java Program to demonstrate use of Method Overriding
+import java.io.*;
+class Vehicle {
+    void drive()
+    {
+        System.out.println("drive() method of base class");
+        System.out.println("driving the Car.");
+    }
+}
+class Car extends Vehicle {
+    void drive()
+    {
+        System.out.println(
+            "drive() method of derived class");
+        System.out.println("Car is driving.");
+    }
+}
+class GFG {
+    public static void main(String[] args)
+    {
+        Car c1 = new Car();
+        Vehicle v1 = new Vehicle();
+        c1.drive();
+        v1.drive();
+        Vehicle vehicle = new Car();
+        // drive() method of Vehicle class is overridden by
+        // Car class drive()
+        vehicle.drive();
+    }
+}
+
+Output
+drive() method of derived class
+Car is driving.
+drive() method of base class
+driving the Car.
+drive() method of derived class
+Car is driving.
+
+
+
+
+
+
+
+      Method Overloading                                                              Method Overriding
+
+When two or multiple methods are in the same                           When a subclass provides its own implementation of a class with different parameters but the same name.                     method that is already defined in the parent class.
+                                                              
+Method overloading can only happen in the                              Method overriding can only happen in Subclass.
+same class or between a subclass or parent class.
+
+When an error occurs it is caught at                                   When an error occurs it is caught at Runtime of the  compile time of the program.                                                         program.
+ 
+
+Example of Compile Time Polymorphism.                                   Example of Run Time Polymorphism.
+
+Method Overloading may or may not require Inheritance.                  Method overriding always needs Inheritance
+
+It occurs within the class.                                             It is performed in two classes with an inheritance                                                                               relationship.
+
+@Override is not used	                                                     @Override is recommended
+
+
+
+
+
+
+
+109. Can we override the private methods?
+
+It is not possible to override the private methods in Java. Method overriding is where the method in the subclass is implemented instead of the method from the parent class. The private methods are accessible only within the class in which it is declared. Since this method is not visible to other classes and cannot be accessed, it cannot be overridden. 
+
+
+
+
+
+
+
+110. Can we change the scope of the overridden method in the subclass?
+
+In Java, it is not possible to modify the overridden method’s scope. The subclass method’s scope must be equal to or wider than the Superclass method’s overridden method’s scope. However, you can increase the scope or keep it the same as in the superclass.
+
+
+
+
+
+
+
+111. Can we modify the throws clause of the superclass method while overriding it in the subclass?
+
+We can modify the throws clause of the Superclass method with some limitations, we can change the throws clause of the superclass method while overriding it in the subclass. The subclass overridden method can only specify unchecked exceptions if the superclass method does not declare any exceptions. If the superclass method declares an exception, the subclass method can declare the same exception, a subclass exception, or no exception at all. However, the subclass method cannot declare a parent exception that is broader than the ones declared in the superclass method.
+
+You can declare narrower (subtype) checked exceptions in the subclass.
+You cannot declare broader (supertype) checked exceptions than those in the superclass method.
+You can freely add or remove unchecked exceptions.
+
+
+
+
+
+
+
+112. Can you have virtual functions in Java?
+Yes, Java supports virtual functions. Functions are by default virtual and can be made non-virtual using the final keyword.
+
+private, and non-final methods in Java are virtual functions. This means that method calls are resolved at runtime based on the actual object type, not the reference type, allowing for runtime polymorphism.
+
+What is a Virtual Function?
+
+A virtual function is a method that is resolved at runtime rather than compile time. This enables dynamic method dispatch, allowing the JVM to call the correct method in the subclass, even if the method is invoked using a superclass reference.
+
+In Java:
+All instance methods are virtual by default unless marked as final, private, or static.
+Static methods, final methods, and private methods are not virtual, as they are resolved at compile time (static binding).
+
+
+
+
+
+
+
+113. What is Abstraction?
+
+Abstraction refers to the act of representing essential features without including background details. The detailed information or the implementation is hidden. The most common example of abstraction is a car, we know how to turn on the engine, accelerate and move, however, the way engine works, and its internal components are complex logic hidden from the general users. This is usually done to handle the complexity.
+
+
+
+
+
+
+
+
+114. What is Abstract class?
+
+A class declared as abstract, cannot be instantiated i.e., the object cannot be created. It may or may not contain abstract methods but if a class has at least one abstract method, it must be declared abstract.
+
+Example of an abstract class with abstract method:
+// Java Program to implement
+// abstract method
+import java.io.*;
+// Abstract class
+abstract class Fruits {
+    abstract void run();
+}
+// Driver Class
+class Apple extends Fruits {
+    void run()
+    {
+        System.out.println("Abstract class example");
+    }
+    // main method
+    public static void main(String args[])
+    {
+        Fruits obj = new Apple();
+        obj.run();
+    }
+}
+
+Output
+
+Abstract class example
+
+
+
+
+
+
+
+
+115. When Abstract methods are used?
+
+An abstract method is used when we want to use a method but want to child classes to decide the implementation in that case we use Abstract methods with the parent classes.
+Abstract methods are used when you want to define a method in a superclass, but you don't want to provide its implementation. Instead, you want the subclasses to provide their own specific implementations. Abstract methods allow you to enforce a certain contract on subclasses, ensuring they implement specific behaviors.
+
+
+Common behavior: When different subclasses are expected to have a common behavior, but the implementation details vary (e.g., sound() for different animals).
+
+
+
+
+
+
+
+116. How can you avoid serialization in the child class if the base class is implementing the Serializable interface?
+
+Serialization in the child class if the base class is implementing the Serializable interface then we can avoid it by 
+
+Use the transient keyword for child class fields.
+
+Customize the serialization process by overriding writeObject() and readObject().
+
+Completely prevent serialization by throwing NotSerializableException in the child class.
+ 
+
+
+
+
+
+
+
+
+117. What is Collection Framework in Java?
+
+Collections are units of objects in Java. The collection framework is a set of interfaces and classes in Java that are used to represent and manipulate collections of objects in a variety of ways. The collection framework contains classes(ArrayList, Vector, LinkedList, PriorityQueue, TreeSet) and multiple interfaces (Set, List, Queue, Deque) where every interface is used to store a specific type of data.
+
+
+It provides implementations for common data structures such as lists, sets, queues, and maps, which are used to store collections of data. The framework simplifies how developers handle data storage, manipulation, and retrieval.
+
+
+
+
+
+118. Explain various interfaces used in the Collection framework.
+
+Collection framework implements
+
+Collection Interface
+List Interface
+Set Interface
+Queue Interface
+Deque Interface
+Map Interface
+
+
+
+Collection interface: Collection is the primary interface available that can be imported using java.util.Collection.
+ from which other collection types like List, Set, and Queue inherit.
+Syntax:
+public interface Collection<E> extends iterable
+
+List: allows ordered and indexed collections with duplicates.
+
+Set : disallows duplicates and represents a collection of unique elements.
+
+Queue : represents FIFO collections, while Deque supports double-ended operations.
+
+Map : represents key-value pairs and is essential for mapping data.
+     Maps keys to values. It does not extend the Collection interface but is a part of the framework. Keys must be unique.
+      Examples: HashMap, TreeMap.
+
+  SortedSet and SortedMap maintain ordered collections, while NavigableSet and NavigableMap add enhanced navigation   capabilities.
+
+
+
+
+
+
+
+119. How can you synchronize an ArrayList in Java?
+
+An ArrayList can be synchronized using two methods mentioned below:
+
+1.Using Collections.synchronizedList()
+2.Using CopyOnWriteArrayList
+
+1.Using Collections.synchronizedList(): The simplest and most common way to synchronize an ArrayList. It wraps the list and makes it thread-safe.
+public static List<T> synchronizedList(List<T> list)
+
+2. Using CopyOnWriteArrayList:
+A thread-safe collection optimized for situations where reads are far more frequent than writes.
+Create an empty List.
+It implements the List interface
+It is a thread-safe variant of ArrayList
+T represents generic
+
+
+ 
+ 
+
+
+
+
+120. Why do we need a synchronized ArrayList when we have Vectors (which are synchronized) in Java?
+ArrayList is in need even when we have Vectors because of certain reasons:
+
+ArrayList is faster than Vectors.
+ArrayList supports multithreading whereas Vectors only supports single-thread use.
+ArrayList is safer to use, as Vectors supports single threads and individual operations are less safe and take longer to synchronize.
+Vectors are considered outdated in Java because of their synchronized nature.
+
+
+
+
+
+
+
+
+
+121. Why can’t we create a generic array?
+
+In Java, creating a generic array is not allowed due to type erasure and how arrays handle their types at runtime.  
+1. Type Erasure
+Java uses type erasure for generics, meaning that generic type information is only available at compile-time and is removed at runtime. This causes a conflict with how arrays are designed.
+
+Arrays in Java are covariant, meaning that an array of a subclass type can be assigned to an array of its superclass type.
+
+For example:
+
+Object[] objArray = new String[10]; 
+
+For generic collections, it's recommended to use classes from the Java Collection Framework, like ArrayList, to avoid these issues.
+
+
+
+
+
+
+
+122. Can you explain how elements are stored in memory for both regular arrays and ArrayLists in Java? . Explain.
+The elements of a regular array in Java are stored in contiguous memory locations, meaning that each element is stored in a sequential block of memory. This allows easy access to any element by its index because the address can be calculated using the base address of the array and the size of each element
+
+In contrast, the ArrayList class implements a dynamic array, which means that its size can change as elements are added or removed. ArrayList elements are also stored in contiguous memory locations, similar to arrays. However, when an ArrayList reaches its capacity and more elements need to be added, a new, larger underlying array is created. The elements from the old array are then copied to the new one. This process ensures that the ArrayList can grow dynamically while keeping the elements in contiguous memory locations.
+
+
+
+
+
+
+
+
+123. Explain the method to convert ArrayList to Array and Array to ArrayList.
+
+Conversion of List to ArrayList
+There are multiple methods to convert List into ArrayList
+
+Programmers can convert an Array to ArrayList using asList() method of the Arrays class. 
+It is a static method of the Arrays class that accepts the List object.
+
+Syntax:
+
+Arrays.asList(item)
+Example:
+
+
+// Java program to demonstrate conversion of
+// Array to ArrayList of fixed-size.
+import java.util.*;
+// Driver Class
+class GFG {
+    // Main Function
+    public static void main(String[] args)
+    {
+        String[] temp = { "Abc", "Def", "Ghi", "Jkl" };
+        // Conversion of array to ArrayList
+        // using Arrays.asList
+        List conv = Arrays.asList(temp);
+        System.out.println(conv);
+    }
+}
+
+Output
+[Abc, Def, Ghi, Jkl]
+
+
+Conversion of ArrayList to Array
+ 
+Java programmers can convert ArrayList to
+
+Syntax:
+
+List_object.toArray(new String[List_object.size()])
+Example:
+
+
+
+
+
+import java.util.List;
+import java.util.ArrayList;
+
+// Driver Class
+class GFG {
+    // Main Function
+    public static void main(String[] args) {
+        // List declared
+        List<Integer> arr = new ArrayList<>();
+        arr.add(1);
+        arr.add(2);
+        arr.add(3);
+        arr.add(2);
+        arr.add(1);
+        
+        // Conversion
+        Object[] objects = arr.toArray();
+        
+        // Printing array of objects
+        for (Object obj : objects)
+            System.out.print(obj + " ");
+    }
+}
+
+Output
+1 2 3 2 1 
+
+
+
+
+
+
+124. How does the size of ArrayList grow dynamically? And also state how it is implemented internally.
+
+Due to ArrayLists array-based nature, it grows dynamically in size ensuring that there is always enough room for elements. When an ArrayList element is first created, the default capacity is around 10-16 elements which basically depends on the Java version. ArrayList elements are copied over from the original array to the new array when the capacity of the original array is full. As the ArrayList size increases dynamically, the class creates a new array of bigger sizes and it copies all the elements from the old array to the new array. Now, the reference of the new array is used internally. This process of dynamically growing an array is known as resizing. 
+
+The ArrayList dynamically grows its internal array by 1.5 times when the array becomes full.
+The internal array is resized using the grow() method, which creates a larger array and copies elements from the old array to the new one.
+ The default capacity of an ArrayList is 10, but it can be specified during initialization to optimize performance.
+
+
+
+
+
+125. What is a Vector in Java?
+
+In Java, a Vector is a part of the Java Collection Framework and is a legacy class that implements the List interface. It is similar to an ArrayList but with a few key differences, particularly regarding synchronization.
+
+1.Dynamic Array: Like ArrayList, Vector is a resizable or dynamic array. It grows automatically when more elements are added beyond its current capacity.
+
+2.Synchronized: it is thread-safe. Multiple threads can access a Vector without causing data inconsistency. However, this comes with a performance cost because synchronization can slow down operations.
+
+Vector can be imported using Java.util.Vector.
+
+Elements of the Vector using index numbers.
+
+Vectors are synchronized in nature means they only used a single thread ( only one process is performed at a particular time ).
+
+The vector contains many methods that are not part of the collections framework.
+Syntax:
+
+Vector gfg = new Vector(size, increment);
+
+
+
+
+ 
+
+
+
+126. How to make Java ArrayList Read-Only?
+An ArrayList can be made ready only using the method provided by Collections using the Collections.unmodifiableList() method. 
+
+Syntax:
+
+array_readonly = Collections.unmodifiableList(ArrayList);
+Example:
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] argv) throws Exception {
+        try {
+            // creating object of ArrayList
+            ArrayList<Character> temp = new ArrayList<>();
+            // populate the list
+            temp.add('X');
+            temp.add('Y');
+            temp.add('Z');
+            // printing the list
+            System.out.println("Initial list: " + temp);
+            
+            // getting readonly list
+            // using unmodifiableList() method
+            List<Character> new_array = Collections.unmodifiableList(temp);
+            
+            // printing the list
+            System.out.println("ReadOnly ArrayList: " + new_array);
+            
+            // Attempting to add element to new Collection
+            System.out.println("\nAttempting to add element to the ReadOnly ArrayList");
+            new_array.add('A');
+        } catch (UnsupportedOperationException e) {
+            System.out.println("Exception is thrown : " + e);
+        }
+    }
+}
+
+Output
+Initial list: [X, Y, Z]
+ReadOnly ArrayList: [X, Y, Z]
+
+Attempting to add element to the ReadOnly ArrayList
+Exception is thrown : java.lang.UnsupportedOperationException
+
+
+
+
+
+
+
+
+127. What is a priority queue in Java?
+ 
+A priority queue is an abstract data type similar to a regular queue or stack data structure. Elements stored in elements are depending upon the priority defined from low to high. The PriorityQueue is based on the priority heap.
+
+A Priority Queue in Java is a special type of queue where the elements are ordered according to their natural ordering . Unlike a normal queue (like LinkedList), where elements are ordered in a First-In-First-Out (FIFO) manner, a priority queue orders elements based on priority, with the element of the highest priority (depending on the natural or provided ordering) being dequeued first
+
+
+Use Cases of PriorityQueue:
+
+Task scheduling: Tasks can be scheduled based on their priority.
+
+Dijkstra's algorithm: Priority queues are used to find the shortest path in graph algorithms.
+
+Event simulation systems: Where events must be processed based on priority.
+ 
+
+  a PriorityQueue in Java is a data structure that organizes elements based on priority rather than insertion order, making it useful for scenarios where the most important element should be processed first. By default, it is a min-heap, but you can create a max-heap or custom order with a comparator.
+
+
+Syntax:
+
+import java.util.*;
+
+class PriorityQueueDemo {
+    // Main Method
+    public static void main(String args[]) {
+        // Creating empty priority queue
+        PriorityQueue<Integer> var1 = new PriorityQueue<Integer>();
+        // Adding items to the pQueue using add()
+        var1.add(10);
+        var1.add(20);
+        var1.add(15);
+        // Printing the top element of PriorityQueue
+        System.out.println(var1.peek());
+    }
+}
+
+Output
+10
+
+
+
+
+
+
+
+
+
+128. Explain the LinkedList class.
+ 
+LinkedList classes are non-synchronized.
+Maintains insertion order.
+It can be used as a list, stack, or queue.
+
+The LinkedList class in Java, part of the java.util package, is a doubly linked list implementation of both the List and Deque interfaces. It is a doubly linked list, meaning each node contains references to both the next and previous nodes. This provides efficient insertion and deletion operations but slower access times compared to an array-based structure like ArrayList.
+
+When to Use:
+
+When frequent insertions and deletions are required, especially from both ends of the list.
+ 
+Syntax:
+
+LinkedList<class> list_name=new LinkedList<class>();
+
+
+
+
+
+
+
+
+
+
+129.What is the Stack class in Java and what are the various methods provided by it?
+
+A Stack class in Java is a LIFO data structure that implements the Last In First Out data structure. It is derived from a Vector class but has functions specific to stacks. The Stack class in java provides the following methods:
+
+peek(): returns the top item from the stack without removing it
+empty(): returns true if the stack is empty and false otherwise
+push(): pushes an item onto the top of the stack
+pop(): removes and returns the top item from the stack
+search(): returns the 1, based position of the object from the top of the stack. If the object is not in the stack, it returns -1
+
+
+
+
+
+
+
+
+
+130. What is Set in the Java Collections framework and list down its various implementations?
+
+Sets are collections that don’t store duplicate elements. They don’t keep any order of the elements. The Java Collections framework provides several implementations of the Set interface, including:
+
+HashSet: HashSet in Java, stores the elements in a has table which provides faster lookups and faster insertion. in this  ordered is not important.
+
+LinkedHashSet: LinkedHashSet is an implementation of HashSet which maintains the insertion order of the elements.
+
+TreeSet: TreeSet stores the elements in a sorted order that is determined by the natural ordering of the elements or by a custom comparator provided at the time of creation.
+
+EnumSet: For enum types with high performance and minimal memory usage.
+
+CopyOnWriteArraySet: For thread-safe operations where reads vastly outnumber writes.
+
+
+
+
+131. What is the HashSet class in Java and how does it store elements?
+
+The HashSet class implements the Set interface in the Java Collections Framework and is a member of the HashSet class. Unlike duplicate values, it stores a collection of distinct elements. In this implementation, each element is mapped to an index in an array using a hash function, and the index is used to quickly access the element. It produces an index for the element in the array where it is stored based on the input element. A 
+
+It provides constant-time performance for most operations like adding, removing, and checking for the presence of elements.
+ 
+It allows storing a single null element.
+
+
+Hashing:
+
+When an element is added to a HashSet, the hashCode() method of the object is called to compute its hash code.
+The hash code is an integer value that helps determine where to place the element in the hash table (the underlying data structure).
+
+Buckets:
+
+The hash code is used to compute an index in the internal array (bucket). Each index corresponds to a "bucket" where one or more elements may be stored.
+Ideally, a good hash function will distribute elements uniformly across the buckets, reducing the likelihood of multiple elements ending up in the same bucket.
+ 
+When to Use HashSet:
+Use HashSet when:
+You need to store unique elements.
+You don’t care about the order of the elements.
+You want fast lookup, insertion, and deletion operations.
+
+
+
+
+
+
+
+
+
+
+132. What is LinkedHashSet in Java Collections Framework?
+The LinkedHashSet is an ordered version of Hashset maintained by a doubly-linked List across all the elements. It is very helpful when iteration order is needed. During Iteration in LinkedHashSet, elements are returned in the same order they are inserted.
+
+Syntax: 
+
+LinkedHashSet<E> hs = new LinkedHashSet<E>();
+ 
+
+
+
+
+
+
+133. What is a Map interface in Java?
+ 
+
+The map interface is present in the Java collection and can be used with Java.util package. A map interface is used for mapping values in the form of a key-value form. The map contains all unique keys. Also, it provides methods associated with it like containsKey(), contains value (), etc. 
+
+There are multiple types of maps in the map interface as mentioned below:
+
+SortedMap
+TreeMap
+HashMap
+LinkedHashMap
+
+
+
+
+
+
+
+
+
+
+134. Explain Treemap in Java
+TreeMap is a type of map that stores data in the form of key-value pair. It is implemented using the red-black tree. Features of TreeMap are :
+
+It contains only unique elements.
+It cannot have a NULL key 
+It can have multiple NULL values.
+It is non-synchronized.
+It maintains ascending order.
+
+
+
+
+
+
+
+
+135. What is EnumSet?
+
+EnumSet is a specialized implementation of the Set interface in Java, designed specifically for use with enum types. It is highly efficient, fast, and compact for storing elements of a particular enumeration (enum), offering better performance compared to other Set implementations such as HashSet when working with enums.  
+
+It is non-synchronized.
+
+Faster than HashSet.
+
+All of the elements in an EnumSet must come from a single enumeration type.
+
+It doesn’t allow null Objects and throws NullPointerException for exceptions.
+
+It uses a fail-safe iterator.
+
+Syntax:
+
+public abstract class EnumSet<E extends Enum<E>> 
+Parameter: E specifies the elements.
+
+
+
+
+
+
+
+
+
+
+136. What is BlockingQueue?
+ 
+BlockingQueue is a specialized type of queue in Java that is part of the java.util.concurrent package. It is designed to support operations that wait for the queue to become non-empty when retrieving elements, and wait for space to become available when inserting elements. This behavior is particularly useful in multi-threaded environments, where producer and consumer threads may need to coordinate access to the queue.
+
+BlockingQueue is a thread-safe queue that supports operations that block when the queue is empty or full.
+ 
+Syntax:
+
+public interface BlockingQueue<E> extends Queue<E>
+Parameters: E is the type of elements stored in the Collection
+
+
+
+
+
+
+
+
+137. What is the ConcurrentHashMap in Java and do you implement it?
+
+ConcurrentHashMap is a thread-safe, highly concurrent, and efficient implementation of the Map interface in Java, provided by the java.util.concurrent package. It is designed for use in multi-threaded environments where multiple threads may access or modify the map concurrently, without the need for explicit synchronization on the part of the user.
+ConcurrentHashMap is implemented using Hashtable.
+
+Syntax:
+
+public class ConcurrentHashMap<K, ​V> 
+extends AbstractMap<K, ​V> 
+implements ConcurrentMap<K, ​V>, Serializable
+Parameters: K is the key Object type and V is the value Object type
+
+
+
+
+
+
+
+
+
+138. Can you use any class as a Map key?
+ 
+
+Yes, in Java, we can use any class as a key in a Map, but there are some important considerations to ensure that the Map behaves as expected. Specifically, the class used as a key should properly implement the hashCode() and equals() methods.
+
+The class overriding the equals() method must also override the hashCode() method
+
+The concurrentHashMap class is thread-safe.
+
+The default concurrency level of ConcurrentHashMap is 16.
+
+Inserting null objects in ConcurrentHashMap is not possible as a key or as value.
+
+
+
+
+
+
+
+
+139. What is an Iterator?
+ 
+An Iterator in Java is an interface that provides a standard way to traverse a collection of objects, such as a list, set, or any other type of collection that implements the Iterable interface. It allows you to iterate over elements without exposing the underlying structure of the collection. This is particularly useful for working with collections while maintaining encapsulation and ensuring that the internal representation of the collection can be changed without affecting the iteration mechanism.
+
+  Iterator is the replacement of Enumeration in the Java Collections Framework. It can get an iterator instance from a Collection using the _iterator()_ method.  It also allows the caller to remove elements from the underlying collection during the iteration.
+
+
+
+
+
+
+
+
+
+140.What is an enumeration?
+Enumeration is a user-defined data type. It is mainly used to assign names to integral constants, the names make a program easy to read and maintain. The main objective of the enum is to define user-defined data types.
+
+ It is a way to define a collection of related constants that can be treated as a single type. Enums are particularly useful for representing a fixed set of constants, such as days of the week, months of the year, colors, directions, and so on.
+
+Example:
+
+// A simple enum example where enum is declared 
+// outside any class (Note enum keyword instead of 
+// class keyword) 
+enum Color 
+{ 
+    RED, GREEN, BLUE; 
+}
+
+
+
+
+
+
+
+
+
+141. What is the difference between Collection and Collections?
+
+
+         Collection                                                          Collections
+
+The Collection is an Interface.                                         Collections is a class.
+
+
+It provides the standard functionality
+ of data structure.                                                It is to sort and synchronize the                                                                                                      collection elements.
+
+
+It provides the methods that can 
+be used for the data structure.                                       It provides static methods that 
+                                                                    can be used for various operations.
+
+
+
+
+
+
+142. Differentiate between Array and ArrayList in Java.
+
+
+                  Array                                                  ArrayList
+
+
+Single-dimensional or multidimensional                               Single-dimensional 
+
+For and for each used for iteration                                    Here iterator is used to                                                                                                        traverse riverArrayList 
+
+length keyword returns the size of the array.                             size() method is used to compute the                                                                                          size of ArrayList.
+
+The array has Fixed-size.                                                            ArrayList size is dynamic and                                                                                                 can be increased or                                                                                                     decreased in size when required.
+
+It is faster as above we see it of fixed size                                    It is relatively slower because of                                                                                              its dynamic nature
+ 
+
+Primitive data types can be stored 
+directly in unlikely objects.                                            Primitive data types are not directly added to                                                                               unlikely arrays, they are added indirectly with                                                                                 help of autoboxing and unboxing
+
+
+They can not be added here hence the type.                                They can be added here hence makingArrayList        is in the unsafe                                                                     type-safe. 
+
+
+The assignment operator only serves the purpose            Here a special method is used known as add() method  
+
+
+
+
+
+
+
+143. What is the difference between Array and Collection in Java?
+
+
+                   Array                                                     Collections
+
+
+Array in Java has a fixed size.                                       Collections in Java have dynamic sizes.
+
+In an Array, Elements are stored 
+in contiguous memory locations.                                     In Collections, Elements are not necessarily                                                                                     stored in contiguous memory locations.
+
+Objects and primitive data types 
+can be stored in an array.                                                We can only store objects in                                                                                                  collections.
+
+Manual manipulation is required 
+for resizing the array.                                                      Resizing in collections is handled                                                                                           automatically.
+
+
+The array has basic methods
+ for manipulation.                                                  Collections have advanced methods for                                                                                                   manipulation and iteration.
+
+The array is available since the beginning of Java.                      Collections were introduced in Java  1.2v
+
+
+
+
+
+
+
+
+
+144. Difference between ArrayList and LinkedList.
+
+
+               ArrayList                                                           LinkedList
+
+
+ArrayList is Implemented as an expandable Array.           LinkedList is Implemented as a doubly-linked list.
+
+In ArrayList, Elements are stored in 
+contiguous memory locations                                  LinkedList Elements are stored in non-contiguous                                                                                        memory locations as each element has a                                                                              reference to the next and previous elements.
+
+ArrayLists are faster for random access.                        LinkedLists are faster for insertion and                                                                                          deletion operations
+
+ArrayLists are more memory efficient.                          LinkedList is less memory efficient
+
+ArrayLists Use more memory due
+ to maintaining the array size.                                 LinkedList Uses less memory as it only has                                                                                            references to elements
+
+The search operation is faster in ArrayList.                    The search operation is slower in LinkedList
+
+
+
+
+
+
+
+
+145. Differentiate between ArrayList and Vector in Java.
+
+
+                     ArrayList                                               Vector
+
+
+
+
+
+
+
+
+
+
+146. What is the difference between Iterator and ListIterator?
+
+
+                    Iterator                                                 ListIterator
+
+
+
+
+
+
+
+
+147. Differentiate between HashMap and HashTable.
+
+
+            HashMap                                                        HashTable
+
+
+
+
+
+
+
+
+
+
+
+
+148. What is the difference between Iterator and Enumeration?
+
+                Iterator                                                   Enumeration
+
+
+
+
+
+
+
+149. What is the difference between Comparable and Comparator?
+
+
+                        Comparable                                           Comparator
+
+
+
+
+
+
+
+
+
+150. What is the difference between Set and Map?
+
+
+                Set                                                    Map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**************************************************************************************************************************
+                                          Java Intermediate Interview Questions
+**************************************************************************************************************************
+
+
+
+
+
+
+
+151.Explain the FailFast iterator and FailSafe iterator along with examples for each.
+
+In Java, iterators are used to traverse collections, but they can behave differently based on how they handle concurrent modifications. Two primary types of iterators are Fail-Fast and Fail-Safe iterators.
+
+A FailFast iterator is an iterator that throws a ConcurrentModificationException if it detects that the underlying collection has been modified while the iterator is being used. This is the default behavior of iterators in the Java Collections Framework. 
+For example, the iterator for a HashMap is FailFast.
+
+
+Fail-Safe iterators operate on a clone of the original collection, allowing them to traverse the collection without being affected by modifications to the original collection. This means that even if the collection is modified during iteration, the iterator will not throw an exception.
+
+For example, the iterator for a ConcurrentHashMap is FailSafe.
+
+ 
+ 
+
+
+
+152. What is Exception Handling?
+
+An Exception is an Event that interrupts the normal flow of the program and requires special processing. During the execution of a program, errors and unplanned occurrences can be dealt with by using the Java Exception Handling mechanism. Below are  Instead of terminating the program abruptly when an error occurs, exception handling allows the program to catch the error and handle it gracefully.
+
+some reasons why Exceptions occur in Java:
+
+Device failure
+Loss of Network Connection
+Code Errors
+Opening an Unavailable file
+Invalid User Input
+Physical Limitations (out of disk memory)
+
+
+
+
+
+
+
+
+
+153. How many types of exceptions can occur in a Java program?
+
+There are generally two types of exceptions in Java:
+
+Built-in Exceptions: Built-in exceptions in Java are provided by the Java Libraries. These exceptions can be further divided into two subcategories i.e., checked and unchecked Exceptions. Below are some of the built-in exceptions in Java:
+
+ Checked Exceptions:
+These are exceptions that are checked at compile time.
+The compiler forces the programmer to handle these exceptions by using try-catch blocks or by declaring the exception with the throws keyword.
+
+IOException
+SQLException
+FileNotFoundException
+ClassNotFoundException
+
+
+2.Unchecked Exceptions (Runtime Exceptions):
+These exceptions are not checked at compile time, but occur at runtime.
+They are often the result of programming errors, like logic mistakes or incorrect use of APIs.
+They are subclasses of RuntimeException.
+Examples:
+NullPointerException
+ArrayIndexOutOfBoundsException
+ArithmeticException
+IllegalArgumentException
+
+ 
+
+User-Defined Exceptions: User-defined exceptions are defined by the programmers themselves to handle some specific situations or errors which are not covered by built-in exceptions. To define user-defined exceptions a new class that extends the appropriate exception class must be defined. User-defined Exceptions in Java are used when the built-in exceptions are in Java.
+
+
+
+Errors (Technically, not exceptions):
+
+Errors represent serious problems that are typically beyond the control of the program (usually related to the system's environment).
+Errors are unchecked and usually cannot be handled by the program.
+They are subclasses of Error.
+Examples:
+OutOfMemoryError
+StackOverflowError
+VirtualMachineError
+
+
+
+Checked Exceptions: Must be handled at compile time.
+
+Unchecked Exceptions: Occur at runtime and are not required to be handled.
+
+Errors: Serious problems beyond the program's control that typically lead to program failure.
+
+
+
+
+
+
+
+
+154. Difference between an Error and an Exception.
+
+
+            Errors                                                                         Exceptions
+
+Recovering from Errors is not possible.                            Recover from exceptions by either using a try-catch block                                                                        or throwing exceptions back to the caller.
+
+
+Errors are all unchecked types in Java.                             It includes both checked as well as unchecked types that                                                                            occur.
+
+
+Errors are mostly caused by the environment                               The program is mostly responsible for causing exceptions.                                                                     in which the program is running.
+
+
+Errors can occur at compile time as well as run time.                     All exceptions occur at runtime but checked 
+Compile Time: Syntax Error, Run Time: Logical Error.                     exceptions are known to the compiler while unchecked                                                                               are not.
+
+
+They are defined in java.lang.Error package.                             They are defined in java.lang.Exception package
+
+
+Examples: java.lang.StackOverflowError,                                       Checked Exceptions: SQLException, IOException
+java.lang.OutOfMemoryError                                             Unchecked Exceptions: ArrayIndexOutOfBoundException,
+                                                                               NullPointerException, ArithmeticException.
+
+
+
+
+
+
+
+
+155.Explain the hierarchy of Java Exception classes.
+ 
+
+All exception and error types in Java are subclasses of the class throwable, which is the base class of the hierarchy. This class is then used for exceptional conditions that user programs should catch. NullPointerException is an example of such an exception. Another branch, error is used by the Java run-time system to indicate errors having to do with the JRE. StackOverflowError is an example of one of such error.
+
+1. Throwable
+
+The root class of the exception hierarchy.
+It has two main subclasses: Error and Exception.
+
+2. Error
+Represents serious problems that a reasonable application should not try to catch.
+Errors are usually related to the runtime environment and indicate conditions that can lead to the termination of the application.
+Subclasses of Error:
+OutOfMemoryError
+StackOverflowError
+VirtualMachineError
+AssertionError
+LinkageError
+and others.
+
+
+3. Exception
+
+Represents conditions that a reasonable application might want to catch.
+Exceptions can be further divided into checked and unchecked exceptions.
+
+a. Checked Exceptions
+
+Subclass of Exception that must be either caught or declared in the method signature.
+Examples:
+IOException
+SQLException
+ClassNotFoundException
+FileNotFoundException
+
+b. Unchecked Exceptions (Runtime Exceptions)
+
+Subclass of RuntimeException and do not need to be declared or caught.
+Often due to programming errors.
+
+Examples:
+NullPointerException
+ArrayIndexOutOfBoundsException
+ArithmeticException
+IllegalArgumentException
+NumberFormatException
+
+
+
+
+
+156.Explain Runtime Exceptions.
+
+Runtime Exceptions are exceptions that occur during the execution of a code, as opposed to compile-time exceptions that occur during compilation. Runtime exceptions are unchecked exceptions, as they aren’t accounted for by the JVM.
+Runtime exceptions occures due to logical errors or improper use of APIs. Unlike checked exceptions, runtime exceptions are not checked at compile time, meaning that the compiler does not require you to handle or declare them.
+
+NullPointerException: This occurs when an application attempts to use a null object reference.
+
+ArrayIndexOutOfBoundsException: This occurs when an application attempts to access an array index that is out of bounds.
+
+ArithmeticException: This occurs when an application attempts to divide by zero.
+
+IllegalArgumentException: This occurs when a method is passed on an illegal or inappropriate argument.
+
+Unlike checked exceptions, runtime exceptions do not require a declaration in the throws clause or capture in a try-catch block. However, handling runtime exceptions is advisable in order to provide meaningful error messages and prevent a system crash. Because runtime exceptions provide more specific information about the problem than checked exceptions, they enable developers to detect and correct programming errors more easily and quickly.
+
+
+
+
+
+
+
+
+
+157. What is NullPointerException?
+
+It is a type of run-time exception that is thrown when the program attempts to use an object reference that has a null value. The main use of NullPointerException is to indicate that no value is assigned to a reference variable, also it is used for implementing data structures like linked lists and trees. 
+
+
+
+
+
+
+
+158. When is the ArrayStoreException thrown?
+
+ArrayStoreException is thrown when an attempt is made to store the wrong type of object in an array of objects.
+
+Example:
+
+ 
+public class GFG {
+    public static void main(String args[])
+    {
+         
+        Number[] a = new Double[2];
+        a[0] = new Integer(4);
+    }
+}
+
+Exception in thread "main" java.lang.ArrayStoreException: java.lang.Integer
+    at GFG.main(GFG.java:6)
+
+
+
+
+
+
+
+
+
+
+159. What is the difference between Checked Exception and Unchecked Exception?
+
+Checked Exception:
+
+Checked Exceptions are the exceptions that are checked during compile time of a program. In a program, if some code within a method throws a checked exception, then the method must either handle the exception or must specify the exception using the throws keyword. 
+
+Checked exceptions are of two types: 
+
+Fully checked exceptions: all its child classes are also checked, like IOException, and InterruptedException.
+
+Partially checked exceptions: some of its child classes are unchecked, like an Exception. 
+
+
+Unchecked Exception:
+
+Unchecked are the exceptions that are not checked at compile time of a program. Exceptions under Error and RuntimeException classes are unchecked exceptions, everything else under throwable is checked. 
+
+
+
+
+
+
+
+
+
+160. What is the base class for Error and Exception?
+
+
+Error is an illegal operation performed by the user which causes abnormality in the program. Exceptions are the unexpected events or conditions that comes while running the program, exception disrupts the normal flow of the program’s instructions.
+
+Errors and Exceptions both have a common parent class which is java.lang.Throwable class.
+
+
+
+
+
+
+
+
+161. Is it necessary that each try block must be followed by a catch block?
+
+No, It is not necessary to use catch block after try block in Java as we can create another combination with finally block. Finally is the block which runs despite the fact that the exception is thrown or not.
+
+Try with Resource
+
+
+
+
+162. What is exception propagation?
+
+Exception propagation is a process in which the exception is dropped from to the top to the bottom of the stack. If not caught once, the exception again drops down to the previous method, and so on until it gets caught or until it reaches the very bottom of the call stack.
+
+It allows developers to write cleaner code by enabling higher-level methods to manage exceptions that may occur in lower-level methods. This separation of concerns makes it easier to maintain and debug applications, as error handling can be centralized in one location.
+
+
+
+
+
+163. What will happen if you put System.exit(0) on the try or catch block? Will finally block execute?
+
+
+System.exit(int) has the capability to throw SecurityException. So, if in case of security, the exception is thrown then finally block will be executed otherwise JVM will be closed while calling System. exit(0) because of which finally block will not be executed.
+
+If you call System.exit(0) within a try or catch block, the JVM will terminate the currently running Java Virtual Machine (JVM), and the finally block will not execute.  
+
+
+
+
+
+
+164. What do you understand by Object Cloning and how do you achieve it in Java?
+
+It is the process of creating an exact copy of any object. In order to support this, a java class has to implement the Cloneable interface of java.lang package and override the clone() method provided by the Object class the syntax of which is:
+
+Protected Object clone() throws CloneNotSupportedException{ return (Object)super.clone();}
+In case the Cloneable interface is not implemented and just the method is overridden, it results in CloneNotSupportedException in Java.
+
+
+Types of Cloning
+
+1.Shallow Cloning:
+
+In shallow cloning, a new object is created, but the fields of the object are not recursively cloned. Instead, references to the original object's fields are copied. If the original object contains references to mutable objects, both the original and the cloned object will refer to the same instances of those objects.
+Example:
+If you clone an object containing an array, both the original and the cloned object will refer to the same array.
+
+2.Deep Cloning:
+
+In deep cloning, a new object is created, and all objects referenced by the original object are also cloned. This creates a completely independent copy of the original object, including all nested objects.
+Example:
+If you clone an object containing an array, the cloned object will have its own copy of that array.
+
+
+
+
+
+
+
+165. How do exceptions affect the program if it doesn’t handle them?
+
+Exceptions are responsible for abruptly terminating the running of the program while executing and the code written after the exception occurs is not executed.
+
+
+
+
+
+166.What is the use of the final keyword?
+
+The final keyword is used to make functions non-virtual. By default, all the functions are virtual so to make it non-virtual we use the final keyword.
+
+In Java, the final keyword serves specific purposes when applied to variables, methods, and classes, enforcing immutability or restricting inheritance and method overriding.
+
+Final variable: Cannot be reassigned once assigned.
+Final method: Cannot be overridden.
+Final class: Cannot be subclassed.
+
+
+
+
+
+167. What purpose do the keywords final, finally, and finalize fulfill?
+
+i) final:
+final is a keyword is used with the variable, method, or class so that they can’t be overridden. 
+ 
+ii). finally
+finally is a block of code used with “try-catch” in exception handling. Code written in finally block runs despite the fact exception is thrown or not.
+
+ 
+iii). finalize
+It is a method that is called just before deleting/destructing the objects which are eligible for Garbage collection to perform clean-up activity.
+
+  
+
+
+
+
+168. What is the difference between this() and super() in Java?
+
+           this( )                                                        super( )
+
+It represents the current instance of the class.               It represents the current instance of the parent class.
+
+Calls the default constructor of the same class.               Calls the default constructor of the base class.
+
+Access the methods of the same class.                          Access the methods of the parent class.
+
+Points current class instance.                                 Points the superclass instance.
+
+
+
+
+
+
+
+169. What is multitasking?
+
+Multitasking in Java refers to a program’s capacity to carry out several tasks at once. Threads, which are quick operations contained within a single program, can do this. Executing numerous things at once is known as multitasking.
+
+  In the context of computing, multitasking enables a system to switch between different tasks or processes, giving the appearance that they are running concurrently. This improves efficiency and makes better use of system resources.
+
+Types of Multitasking
+
+1.Process-Based Multitasking:
+
+The operating system allows multiple processes to run at the same time.
+Each process has its own memory space and resources, and the operating system switches between them as needed.
+Example: Running a web browser while simultaneously downloading a file and playing music.
+
+2.Thread-Based Multitasking:
+
+In this form of multitasking, multiple threads within a single process run concurrently.
+Threads share the same memory space and resources of their parent process, making communication between them easier and more efficient.
+Example: A word processor that automatically saves your document in the background while you continue typing.
+ 
+
+
+
+
+
+170. What do you mean by a Multithreaded program?
+
+A multithreaded program is a program that contains multiple threads of execution within a single process. Each thread can run concurrently, allowing the program to perform multiple tasks simultaneously or in overlapping time periods. This can improve the performance and responsiveness of applications, especially on multi-core processors where threads can run in parallel.
+
+ 
+
+
+171.What are the advantages of multithreading?
+
+Responsiveness: User Responsiveness increases because multithreading interactive application allows running code even when the section is blocked or executes a lengthy process.
+
+Resource Sharing: The process can perform message passing and shared memory because of multithreading.
+
+Economy: We are able to share memory because of which the processes are economical.
+
+Scalability: Multithreading on multiple CPU machines increases parallelism.
+
+Better Communication: Thread synchronization functions improves inter-process communication.
+
+Utilization of multiprocessor architecture
+
+Minimized system resource use
+
+Improved Performance and Resource Utilization:
+Multithreading allows a program to make efficient use of CPU resources by performing multiple tasks concurrently. It ensures that the CPU is never idle when there are tasks to be processed, making better use of available computational power.
+
+
+
+
+
+172. What are the two ways in which Thread can be created?
+
+Multithreading is a Java feature that allows concurrent execution of two or more parts of a program for maximum utilization of the CPU. In general, threads are small, lightweight processes with separate paths of execution. These threads use shared memory, but they act independently, thus if any one thread fails it does not affect the other threads. There are two ways to create a thread:
+
+ 
+1.By implementing a Runnable interface.
+2.By extending the Thread class
+
+We create a class that extends the java.lang.Thread class. This class overrides the run() method available in the Thread class. A thread begins its life inside run() method. 
+
+Syntax:
+
+public class MyThread extends Thread {
+public void run() {
+        // thread code goes here
+    }
+}
+
+
+2.By implementing the Runnable interface
+We create a new class that implements java.lang.Runnable interface and override run() method. Then we instantiate a Thread object and call the start() method on this object. 
+
+Syntax:
+
+public class MyRunnable implements Runnable {
+public void run() {
+        // thread code goes here
+    }
+}
+
+
+
+
+
+
+
+
+173. What is a thread?
+
+A thread is the smallest unit of execution in a program, often referred to as a "lightweight process."  These threads use shared memory but they act independently hence if there is an exception in threads that do not affect the working of other threads despite them sharing the same memory. A thread has its own program counter, execution stack, and local variables, but it shares the same memory space with other threads in the same process. Java provides built-in support for multithreading through the Runnable interface and the Thread class.
+
+The two main types of threads in Java are user threads (for core application functionality) and daemon threads (for background tasks and services). While user threads keep the JVM alive, daemon threads are automatically terminated when all user threads have completed.
+
+
+
+
+ 
+
+
+
+174. Differentiate between process and thread?
+
+A process and a thread are both units of execution in a computer system, but they are different in several ways:
+
+            Process                                                             Thread
+
+A process is a program in execution.                          A thread is a single sequence of instructions                                                                             within a process.
+
+The process takes more time to terminate.                     The thread takes less time to terminate.
+
+The process takes more time for context switching.           The thread takes less time for context switching.
+
+The process is less efficient in terms of                         Thread is more efficient in terms of           communication.                                                                communication.
+
+The process is isolated.                                                Threads share memory.
+
+The process has its own Process Control Block,                 Thread has Parents’ PCB, its own Thread Control
+     Stack, and Address Space                                 Block, and Stack and common Address space        
+
+The process does not share data with each other.                    Threads share data with each other.
+
+
+
+
+
+
+
+
+
+175. Describe the life cycle of the thread?
+
+A thread is the smallest unit of execution in a program, often referred to as a "lightweight process." 
+ 
+A thread in Java at any point in time exists in any one of the following states. A thread lies only in one of the shown states at any instant: 
+
+New: The thread has been created but has not yet started.
+
+Runnable: The thread is running, executing its task, or is ready to run if there are no other higher-priority threads.
+
+Blocked: The thread is temporarily suspended, waiting for a resource or an event.
+
+Waiting: The thread is waiting for another thread to perform a task or for a specified amount of time to elapse.
+
+Terminated: The thread has completed its task or been terminated by another thread.
+
+
+
+
+
+
+
+
+176.Explain suspend() method under the Thread class.
+
+The suspend() method of the Thread class in Java temporarily suspends the execution of a thread. When a thread is suspended it goes into a blocked state and it would not be scheduled by the operating system which means that it will not be able to execute its task until it is resumed. There are more safer and flexible alternatives to the suspend() methods in the modern java programming language. This method does not return any value.
+
+The suspend() method in Java was used to pause a thread’s execution but was deprecated due to its unsafe behavior, particularly the potential for deadlocks. Modern alternatives, such as wait()/notify(), sleep(), and using flags, offer safer ways to pause and resume threads in a controlled manner.
+
+Syntax:
+
+public final void suspend();
+
+
+
+
+
+
+
+
+177. Explain the main thread under Thread class execution.
+
+In Java, the main thread is the first thread that gets created and executed when a Java program starts. It is automatically created by the Java Virtual Machine (JVM) and is responsible for running the program’s main() method. The main thread is essential because it sets the stage for the execution of other threads in a Java application .
+Java provides built-in support for multithreaded programming. The main thread is considered the parent thread of all the other threads that are created during the program execution. The main thread serves as the base thread from which all other child threads are spawned. 
+
+ 
+
+
+
+
+
+
+
+
+
+178. What is a daemon thread?
+
+A daemon thread in Java is a low-priority thread that is used to perform background operations or tasks which are used to perform continuously. such as Garbage collection, Signal dispatches, Action listeners, etc. Daemon threads in Java have lower priority than user threads, which means they can only execute when no user threads are running. Daemon threads in Java are useful features that are required for background tasks that do not require explicit shutdown or finalization. It allows more efficient use of system resource and are used to simplify resources and can simplify long-running tasks.
+
+ Daemon threads in Java are ideal for background tasks that support the main program but are not essential to its completion. They allow the JVM to exit cleanly without waiting for their termination, making them suitable for tasks like monitoring, housekeeping, and garbage collection. However, care should be taken to ensure daemon threads do not hold critical resources when the JVM shuts down.
+
+
+
+
+179. What are the ways in which a thread can enter the waiting state?
+
+Thread is a lightweight process that runs concurrently with the other thread inside a single process. Each thread can execute a different task and share the resources within a single process. Thread in Java can enter the waiting state in many different ways:
+
+Sleep() method Call: The sleep () method is used to pause the execution of the thread for a specific amount of time. While the thread is paused it goes into the waiting state.
+
+Wait() method: This method is used to wait a thread until the other thread signals it to wake up. Thread goes into the waiting state until it receives a notification from another thread.
+
+Join() method: Join() method can be used to wait for thread to finish the execution. Calling thread goes into the waiting state until the target thread is completed.
+
+Waiting for I/O operations: If the thread is waiting for Input/Output operation to complete, it goes into the waiting state until the operation is finished.
+
+Synchronization Issues: If there are any synchronization issues in a multi-threaded application, threads may go into the waiting state until the synchronization issues are resolved.
+
+
+
+
+
+ 
+
+
+
+180. How does multi-threading take place on a computer with a single CPU?
+
+Java uses a technique called time-sharing, commonly referred to as time-slicing, to implement multi-threading on computers with a single CPU. The appearance of parallel execution is created by the CPU switching between active threads. The operating system is in charge of allocating CPU time to each thread sequentially and scheduling the threads.
+
+Multithreading on a computer with a single CPU is achieved through a technique called time-sharing. In a single-CPU system, the CPU can execute only one thread at a time. However, the operating system (OS) and the CPU work together to simulate concurrent execution of multiple threads. Here’s how it works:
+
+1. Time Slicing
+The operating system divides the CPU's time into small slices, giving each thread a short time period to execute.
+This time-slicing mechanism allows multiple threads to share the CPU without having to wait for one thread to finish entirely before another begins execution.
+
+2. Context Switching
+When a thread's time slice expires, the CPU performs a context switch.
+During a context switch, the current state of the running thread (its registers, program counter, stack, etc.) is saved, and the state of the next thread to run is loaded.
+This context switching enables the CPU to switch between different threads rapidly, giving the illusion of simultaneous execution.
+
+3. Thread Scheduling
+The operating system has a thread scheduler that manages the execution of threads. It decides which thread to run based on various scheduling algorithms (e.g., round-robin, priority-based).
+The scheduler determines how much CPU time each thread gets and in what order they should be executed.
+
+4. Blocking and Waiting
+When a thread is blocked (e.g., waiting for I/O operations, waiting for user input), the CPU can switch to another thread that is ready to run.
+This maximizes CPU utilization, as the CPU does not sit idle while a thread is waiting for resources.
+
+5. Concurrency vs. Parallelism
+In a single-CPU system, multithreading achieves concurrency, where multiple threads progress in overlapping time periods.
+Parallelism refers to multiple threads running simultaneously on multiple CPUs or cores, which is not possible in a single-CPU system.
+
+
+
+
+************************************************************************************************
+                           Java Interview Questions For Experienced
+
+************************************************************************************************
+
+
+
+
+181. What are the different types of Thread Priorities in Java? And what is the default priority of a thread assigned by JVM?
+
+Priorities in threads is a concept where every thread is having a priority which in layman’s language one can say every object is having priority here which is represented by numbers ranging from 1 to 10. There are different types of thread properties in Java mentioned below:
+
+MIN_PRIORITY
+MAX_PRIORITY
+NORM_PRIORITY 
+By default, the thread is assigned NORM_PRIORITY.
+ The default priority assigned to a thread by the JVM is 5,
+
+
+
+
+
+
+
+
+182. Why Garbage Collection is necessary in Java?
+
+For Java, Garbage collection is necessary to avoid memory leaks which can cause the program to crash and become unstable. There is no way to avoid garbage collection in Java. Unlike C++, Garbage collection in Java helps programmers to focus on the development of the application instead of managing memory resources and worrying about memory leakage.
+
+Java Virtual Machine (JVM) automatically manages the memory periodically by running a garbage collector which frees up the unused memory in the application. Garbage collection makes Java memory efficient because it removes unreferenced objects from the heap memory.
+
+
+
+
+
+
+
+183. What is the drawback of Garbage Collection?
+
+Apart from many advantages, Garbage Collector has certain drawbacks mentioned below:
+
+The main drawback to Garbage collection is that it can cause pauses in an application’s execution as it works to clear the memory which slows down the performance of the application. 
+The Process of Garbage collection is non-deterministic which makes it difficult to predict when garbage collection occurs which causes unpredictable behavior in applications. For Example, if we write any program then it is hard for programmers to decide if the issue is caused by garbage collection or by any other factors in the program. 
+
+Garbage collection can also increase memory usage if the program creates and discards a lot of short-lived objects.
+
+
+ 
+
+
+
+
+184. Explain the difference between a minor, major, and full garbage collection.
+
+The Java Virtual Machine (JVM) removes objects that are no longer in use using a garbage collector which periodically checks and removes these objects. There are different types of garbage collection in the JVM, each with different characteristics and performance implications. The main 
+types of garbage collection are:
+
+Minor garbage collection: Also known as young generation garbage collection, this type of garbage collection is used to collect and reclaim memory that is used by short-lived objects (objects that are quickly created and discarded). 
+
+Major garbage collection: Also known as old-generation garbage collection, this type of garbage collection is used to collect and reclaim memory that is used by long-lived objects (objects that survive multiple minor garbage collections and are promoted to the old generation).
+
+Full garbage collection: During full garbage collection, memories from all generations are collected and reclaimed, including memories of young and old. A full garbage collection normally takes longer to complete than a minor or major garbage collection which causes that app to pause temporarily.
+
+
+
+
+
+
+
+
+185. How will you identify major and minor garbage collections in Java?
+
+Major garbage collection works on the survivor space and Minor garbage collection works on the Eden space to perform a mark-and-sweep routine.
+And we can identify both of them based on the output where the minor collection prints “GC”, whereas the major collection prints “Full GC” for the case where the garbage collection logging is enabled with “-XX:PrintGCDetails” or “verbose:gc”.
+
+minor collection prints “GC”
+major collection prints “Full GC”
+
+
+
+
+
+186.What is a memory leak, and how does it affect garbage collection?
+
+In Java Memory leaks can be caused by a variety of factors, such as not closing resources properly, holding onto object references longer than necessary, or creating too many objects unnecessarily. There are situations in which garbage collector does not collect objects because there is a reference to those objects. In these situations where the application creates lots of objects and does not use them and every object has some valid references, a Garbage collector in Java cannot destroy the objects. These useless objects which do not provide any value to the program are known as Memory leaks. Memory leaks can impact garbage collection negatively by preventing the garbage collector from reclaiming unused memory. This behavior will lead to slow performance or sometimes system failure. In a program, it is important to avoid memory leaks by managing resources and object references properly. 
+
+A memory leak occurs when a program unintentionally retains references to objects that are no longer needed, preventing them from being garbage collected. In other words, even though the object is no longer in use, the program keeps holding onto it, which causes the memory to remain occupied.
+
+Impact on Garbage Collection:
+ 
+Increased Memory Usage: Over time, the program consumes more memory than it actually needs because the garbage collector cannot free memory used by the objects involved in the memory leak.
+
+Performance Degradation: As memory usage increases, the system may run low on available memory, slowing down performance. More frequent garbage collection cycles may also be triggered as the system tries to free up space, further reducing performance.
+
+Out of Memory Errors: In extreme cases, memory leaks can lead to OutOfMemoryError in Java or similar memory exhaustion errors in other languages, causing the program to crash.
+
+
+
+
+
+
+
+
+
+187. Name some classes present in java.util.regex package.
+
+Regular Expressions or Regex in Java is an API used for searching and manipulating of strings in Java. It creates String patterns that can extract the data needed from the strings or can generalize a pattern.
+
+There are 3 Classes present in java.util.regex mentioned below:
+
+Pattern Class: Can define patterns
+
+Matcher Class: Can perform match operations on text using patterns
+
+PatternSyntaxException Class: Can indicate a syntax error in a regular expression pattern.
+
+Also, apart from the 3 classes package consists of a single interface MatchResult Interface which can be used for representing the result of a match operation.
+
+
+
+
+
+
+
+
+
+
+188. Write a regular expression to validate a password. A password must start with an alphabet and followed by alphanumeric characters; Its length must be in between 8 to 20.
+
+regex = “^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$).{8, 20}$”
+Explanation:
+
+^ used for starting character of the string.
+(?=.*[0-9]) used for a digit must occur at least once.
+(?=.*[a-z]) used for a lowercase alphabet must occur at least once.
+(?=.*[A-Z]) used for an upper case alphabet that must occur at least once in the substring.
+(?=.*[@#$%^&-+=()] used for a special character that must occur at least once.
+(?=\\S+$) white spaces don’t allow in the entire string.
+.{8, 20} used for at least 8 characters and at most 20 characters.
+$ used for the end of the string.
+
+
+
+
+
+
+
+
+
+
+189. What is JDBC?
+
+JDBC standard API is used to link Java applications and relational databases. It provides a collection of classes and interfaces that let programmers to use the Java programming language to communicate with the database. The classes and interface of JDBC allow the application to send requests which are made by users to the specified database. There are generally four components of JDBC by which it interacts with the database:
+
+JDBC API
+JDBC Driver manager
+JDBC Test Suite
+JDBC-ODBC Bridge Drivers
+
+
+
+JDBC (Java Database Connectivity) is an API (Application Programming Interface) in Java that allows Java applications to interact with databases. It provides a standard set of interfaces for connecting to relational databases, sending SQL queries, and handling the results.
+
+Key Components of JDBC:
+
+DriverManager: Manages a list of database drivers and establishes a connection to the database.
+
+Connection: Represents a connection to the database. Once a connection is established, SQL queries can be executed.
+
+Statement: An object that allows you to send SQL queries to the database. Three types of statements are commonly used:
+
+Statement: For simple SQL queries without parameters.
+
+PreparedStatement: For precompiled SQL queries with parameters, which provides better performance and security.
+
+CallableStatement: For executing stored procedures in the database.
+
+ResultSet: Represents the result set of a query. It provides methods to iterate through the results and access data from rows.
+
+SQLException: Exception that JDBC methods throw when a database error occurs.
+Basic Steps in JDBC:
+
+Load the JDBC Driver: This step registers the driver, so the application knows which database it is connecting to.
+
+ 
+Why Use JDBC?
+
+It provides a standardized interface to communicate with different types of databases.
+
+It supports dynamic SQL query execution.
+
+JDBC is part of Java SE, which makes it easy to use in various Java-based applications.
+
+JDBC can be used with a wide variety of databases like MySQL, Oracle, PostgreSQL, and others, as long as the 
+appropriate JDBC driver is available for the database.
+
+
+
+
+
+
+
+
+
+
+
+190. What is JDBC Driver?
+
+JDBC Driver is a software component that is used to enable a Java application to interact with the database. JDBC provides the implementation of the JDBC API for a specific database management system, which allows it to connect the database, execute SQL statements and retrieve data. There are four types of JDBC drivers:
+
+JDBC-ODBC Bridge driver
+Native-API driver
+Network Protocol driver
+Thin driver
+JDBC-Driver-660
+
+
+
+
+
+
+
+
+
+191. What are the steps to connect to the database in Java?
+
+There are certain steps to connect the database and Java Program as mentioned below:
+
+Import the Packages
+
+Load the drivers using the forName() method 
+
+Register the drivers using DriverManager 
+
+Establish a connection using the Connection class object
+
+Create a statement
+
+Execute the query
+ 
+Close the connections
+
+
+
+
+
+
+
+
+
+192. What are the JDBC API components?
+
+JDBC API components provide various methods and interfaces for easy communication with the databases also it provides packages like java Se and java EE which provides the capability of write once run anywhere (WORA).
+
+Syntax:
+
+java.sql.*;
+
+
+
+
+193. What is JDBC Connection interface?
+
+Java database connectivity interface (JDBC) is a software component that allows Java applications to interact with databases. To enhance the connection, JDBC requires drivers for each database.
+
+
+
+
+
+
+
+194. What does the JDBC ResultSet interface?
+
+JDBC ResultSet interface is used to store the data from the database and use it in our Java Program. We can also use ResultSet to update the data using updateXXX() methods. ResultSet object points the cursor before the first row of the result data. Using the next() method, we can iterate through the ResultSet.
+
+
+
+
+
+
+195. What is the JDBC Rowset?
+
+A JDBC RowSet provides a way to store the data in tabular form. RowSet is an interface in java that can be used within the java.sql package. The connection between the RowSet object and the data source is maintained throughout its life cycle. RowSets are classified into five categories based on implementation mentioned below:
+
+JdbcRowSet
+CachedRowSet
+WebRowSet
+FilteredRowSet
+JoinRowSet
+
+
+
+
+
+
+
+196. What is the role of the JDBC DriverManager class?
+
+JDBC DriverManager class acts as an interface for users and Drivers. 
+
+It is used to create a connection between a Java application and the database. 
+
+Helps to keep track of the drivers that are available.
+
+It can help to establish a connection between a database and the appropriate drivers.
+
+It contains all the methods that can register and deregister the database driver classes.
+
+DriverManager.registerDriver() method can maintain the list of Driver classes that have registered themselves.
+ 
+
+
+
+
+
+
+
+
+197. Differentiate between Iterable and Iterator.
+
+          Iterable                                                            Iterator
+
+Iterable provides a way to iterate
+ over a sequence of elements.                                Iterator helps in iterating over 
+                                                             a collection of elements sequentially.
+
+iterator() method returns an Iterator.	                    hasNext() and next() methods are required.
+
+remove() method is optional.                    	     remove() method is required in the                                                                                                  iterator.
+
+Examples are List, Queue, and Set                            Examples are ListIterator, Enumeration, and                                                                                       ArrayIterator.
+
+
+
+
+
+
+
+198. Differentiate between List and Set.
+
+
+         List                                                                Set
+
+      Ordered                                                           Unordered
+
+List allows duplicates.                                   Set does not allow duplicate values.
+
+List is accessed by index.                                  Set is accessed by hashcode.
+
+Multiple null elements can be stored.                       Null element can store only once.
+
+Examples are ArrayList, LinkedList, etc.                   Examples are HashSet and TreeSet. LinkedHashSet etc.
+
+
+
+
+
+
+
+
+
+199. Differentiate between List and Map.
+
+                List                                                     Map
+
+List interface allows duplicate elements.                Map does not allow duplicate elements.
+
+List maintains insertion order.                          Map do not maintain insertion order.
+
+Multiple null elements can be stored.                     The map allows a single null key at most                                                                                     and any number of null values.
+
+The list provides get() method to
+ get the element at a specified index.                 The map does not provide a get method
+                                                       to get the elements at a specified index.
+
+List is Implemented by ArrayList, etc.                  Map is Implemented by HashMap, TreeMap,                                                                                               LinkedHashMap
+
+
+
+
+
+
+
+
+
+200. Differentiate between Queue and Stack.
+
+       Queue                                                          Stack
+
+Queue data structure is used to store elements, 
+and is used to perform operations like enqueue, 
+dequeue from back or end of the queue.                      Stack data structure is used to store                                                                                         elements, and is used to perform operations
+                                                           like push, pop from top of the stack.
+
+
+Queue data structure Implements FIFO order.               Stack data structure Implements LIFO order.
+
+
+Insertion and deletion in queues take place 
+from the opposite ends of the list. Deletion 
+takes place from the front of the list and 
+insertion takes place at the rear of the list.                Insertion and deletion in stacks take place                                                                                 only from one end of the list called the top.
+
+Insert operation is called enqueue operation.                         Insert operation is called Push operation.
+
+
+Queue is generally used to solve 
+problems related to sequential processing.                 Stack is generally used to solve                                                                                                 problems related to recursion.
+
+
+
+
+
+
+
+
+
+201. Differentiate between PriorityQueue and TreeSet.
+
+            Priority Queue                                                     TreeSet
+
+
+It uses Queue as an underlying data structure.                It uses a Set as an underlying data structure.
+
+This data structure allows duplicate elements                 This data structure does not allow duplicate                                                                                                elements
+
+
+Priority Queue is Implemented by PriorityQueue class.                  TreeSet is implemented by TreeSet class.
+
+
+PriorityQueue comes in JDK 1.5.                                              TreeSet comes in JDK 1.4.
+
+
+PriorityQueue<Integer> pq = new PriorityQueue<>();                          treeSet<Integer> ts = new TreeSet<>();
+
+
+
+
+
+
+
+
+
+202. Differentiate between the Singly Linked List and Doubly Linked List.
+
+Singly Linked List                                          Doubly Linked List
+
+Singly Linked List contain only 
+two segments i.e, Data and Link.                              Doubly Linked List contains three                                                                                           segments i.e, Data, and two pointers.
+
+
+
+Traversal in a singly linked list
+ is possible in only a forward direction.                 Traversal in a doubly linked list is                                                                                      only possible in both directions
+                                                             forward as well as backward.
+
+It uses less memory as every 
+single node has only one pointer.                          It requires more memory than a singly                                                                                            linked list as each node has two pointers.
+                  
+Easy to use and insert nodes at 
+the beginning of the list.                              Slightly more complex to use and easy to                                                                                           insert at the end of the list.
+
+The time complexity of insertion
+ and deletion is O(n).                                 The time complexity of insertion and                                                                                                 deletion is O(1).
+
+ 
+
+
+
+
+
+
+203. Differentiate between Failfast and Failsafe.
+
+
+FailFast                                                       FailSafe
+
+Failsfast fails immediately when it detects
+concurrent modification during the time of
+ iteration.                                                       Failsafe continues to iterate over the                                                                                       original collection and also creates a                                                                                          copy to modify.
+
+
+Failfast is generally used in 
+single-threaded environments.                            Failsafe is used in multithreaded environments.
+
+
+Failfast does not allow any 
+modification while iteration.                           Failsafe allows modification during the                                                                                             time of iteration.
+
+Failfast is fast compared to failsafe
+ as it does not involve the copying of 
+the collection.                                            Failsafe is generally slow compared to failfast.
+
+FailFast throws ConcurrentModificationException
+ if the collection is modified during iteration.           FailSafe does not throws any exception but                                                                                       instead, it creates a copy of the collection                                                                                    to iterate.
+
+
+
+
+
+
+
+
+
+204. Differentiate between HashMap and TreeMap.
+
+
+HashMap                                                                  TreeMap
+
+Hasmap uses a hashtable in
+order to store key-value pairs.                                       Treemap uses Red-black trees                                                                                              to store key-value pair.
+
+Hashmap does not maintain
+any specific order for key-value pairs
+                                                                      Treemap maintains a natural
+                                                                     ordering based on the keys.
+
+Order of iteration is not 
+guaranteed in the hashmap.                                             Iteration is of sorted 
+                                                                         order based on keys.
+
+Hashmaps are faster for
+ retrieval compared to Treemap.                                    Retrieval in Treemap is slower
+                                                                      as it uses tree traversal to                                                                                              find keys.
+
+Hashmap is implemented by 
+using an Array of linked list.                                          TreeMap is implemented 
+                                                                       using a Red-black Tree.
+
+Hashmap uses the equals() method
+ of the Object class to compare keys.                                    TreeMap uses compareTo()
+                                                                      method to compare keys.
+
+
+
+
+
+
+
+
+
+
+
+205. Differentiate between Queue and Deque.
+
+
+           Queue                                                          Deque
+
+The queue is a linear Data structure that             
+ is used to store a collection of element                Deque also known as a Double-ended queue is also
+                                                          a linear data structure that stores a collection 
+                                                           of elements with operations to remove and add 
+                                                          from both ends.
+ 
+
+
+Elements in the queue can only be                      Elements can be inserted from 
+inserted at the end of the data structure.                both ends of the data structure.
+
+
+Queue can be implemented using                            Dequeue can be implemented using Circular
+Array or Linked List.                                        Array or Doubly Linked List.
+
+
+Queues are generally used to implement                  Deque is used to implement a stack or     
+a waiting list or task queue.                           dequeuing elements from both ends.
+
+ 
+
+
+
+
+
+
+
+
+
+
+206. Differentiate between HashSet and TreeSet.
+
+
+   HashSet                                                          TreeSet
+
+HashSet is unordered.                                  TreeSet is based on natural ordering.
+
+HashSet allows null elements.                          TreeSet does not allow null elements.
+
+HashSet is Implemented by the HashSet class.            TreeSet is Implemented by TreeSet class.
+
+HashSet<String> hs = new HashSet<>();                    TreeSet<String> ts = new TreeSet<>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
